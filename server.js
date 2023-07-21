@@ -12,8 +12,8 @@ app.get('/',async (req, res) => {
     React.createElement('h1', null, '¡Hola desde el servidossssr!')
   );
 
-  const header = await ejs.renderFile(__dirname + '/views/header.ejs'); // Renderizar la plantilla del encabezado
-  const footer = await ejs.renderFile(__dirname + '/views/footer.ejs'); // Renderizar la plantilla del pie de página
+  const header = await ejs.renderFile(__dirname + '/views/header.ejs');
+  const footer = await ejs.renderFile(__dirname + '/views/footer.ejs');
   
 
   res.render('index.ejs', { header, footer, content: html }); // Renderizar la plantilla principal (index.ejs) con las variables necesarias
