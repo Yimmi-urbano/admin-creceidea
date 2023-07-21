@@ -9,7 +9,7 @@ app.set('views', __dirname + '/views');
 
 app.get('/',async (req, res) => {
   const html = ReactDOMServer.renderToString(
-    React.createElement('h1', null, '¡Hola desde el servidossssr!')
+    React.createElement('h1', null, '¡Bienvenido a mi app')
   );
 
   const header = await ejs.renderFile(__dirname + '/views/header.ejs');
