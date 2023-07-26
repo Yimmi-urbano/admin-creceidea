@@ -19,7 +19,7 @@
   <meta property="og:image" content="Mi tienda" />
   <meta name="format-detection" content="telephone=no">
 
-  <title><%- domain %></title>
+  <title> <%- infoStore.title  %></title>
 
   <link rel="stylesheet" href="<%- cdnstorage %>/css/framework7-bundle.min.css?v=8">
   <link rel="stylesheet" href="<%- cdnstorage %>/css/app.css?v=8">
@@ -44,6 +44,9 @@
 
 <body class="">
   <div id="app">
+
+    
+    
     <div class="view  view-main view-init safe-areas" data-master-detail-breakpoint="800" data-url="/">
       <div class="row no-gutters vh-100 loader-screen">
         <div class="col align-self-center text-white text-align-center">
@@ -204,11 +207,11 @@
   </div>
   <script src="<%- cdnstorage %>/js/framework7-bundle.min.js?v=<%- version %> "></script>
   <script src="<%- cdnstorage %>/js/utilis/utilis.js?v=<%- version %> "></script>
-  <script src="<%- cdnstorage %>/js/utilis/googleMaps.js?v=<%- version %> "></script>
-  <script src="<%- cdnstorage %>/js/utilis/detalleProduct.js?v=<%- version %> "></script>
   <script src="<%- cdnstorage %>/js/routes.js?v=<%- version %> "></script>
   <script src="<%- cdnstorage %>/js/store.js?v=<%- version %> "></script>
   <script src="<%- cdnstorage %>/js/app.js?v=<%- version %> "></script>
+  
+  <%- components %>
 
 </body>
 
