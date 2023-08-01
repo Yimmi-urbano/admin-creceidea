@@ -4,7 +4,7 @@ const React = require('react');
 const ReactDOMServer = require('react-dom/server');
 const ejs = require('ejs');
 const path = require('path');
-const urlcdn =  "https://tiendas.agencsi.com" // process.env.URL_CDN ;
+const urlcdn =  "https://tiendas.agencsi.com";
 const cdnStorage = "https://tiendas.agencsi.com/storage";
 const requestedDomain = 'hoppedidos.com' //req.get('host');
 
