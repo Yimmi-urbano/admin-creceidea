@@ -4,8 +4,8 @@ const React = require('react');
 const ReactDOMServer = require('react-dom/server');
 const ejs = require('ejs');
 const path = require('path');
-const urlcdn = process.env.URL_CDN ;
-const cdnStorage = process.env.CDN_STORAGE;
+const urlcdn = 'https://tiendas.agencsi.com';
+const cdnStorage = urlcdn + '/storage';
 const requestedDomain = 'hoppedidos.com' //req.get('host');
 
 
@@ -17,7 +17,7 @@ function generarCodigoAleatorioConTimestamp() {
 }
 
 const version = generarCodigoAleatorioConTimestamp();
-
+/*
 async function fetchAndPrintPaths() {
   try {
     const response = await fetch(`${urlcdn}/${requestedDomain}/datos/components.json?v=${version}`);
@@ -46,6 +46,7 @@ async function fetchAndPrintPaths() {
     return '';
   }
 }
+
 async function get_store() {
   try {
       const response = await fetch(`${urlcdn}/${requestedDomain}/conf.json?v=${version}`);
@@ -69,7 +70,7 @@ async function get_store() {
       return null;
   }
 }
-
+*/
 
 const app = express();
 app.set('view engine', 'ejs');
@@ -82,19 +83,19 @@ app.get('/', async (req, res) => {
   );
   const header = await ejs.renderFile(path.join(__dirname, '/views/header.ejs'));
   const footer = await ejs.renderFile(path.join(__dirname, '/views/footer.ejs'));
-  const componentsRender = await fetchAndPrintPaths();
-  const infoStore= await get_store();
+  //const componentsRender = await fetchAndPrintPaths();
+  //const infoStore= await get_store();
 
   res.render('index.ejs', {
     header,
     footer,
-    components: componentsRender,
+   // components: componentsRender,
     content: html,
     domain: requestedDomain,
     urldcdn: urlcdn,
     cdnstorage: cdnStorage,
     version,
-    infoStore
+    //infoStore
   });
 
 });
