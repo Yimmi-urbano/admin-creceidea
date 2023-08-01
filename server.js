@@ -108,7 +108,7 @@ app.get('/catalogo.js', (req, res) => {
   res.sendFile(filePath);
   
 });
-*/
+
 app.get('/catalogo/', async (req, res) => {
   const requestedDomain = 'hoppedidos.com' //req.get('host');
   const productos = [
@@ -123,7 +123,7 @@ app.get('/catalogo/', async (req, res) => {
 
   res.render('catalogo.ejs', { header, footer, content: productList, title: requestedDomain });
 });
-
+*/
 
 app.listen(3002, () => {
   console.log('Servidor de renderizado iniciado en http://localhost:3002');
