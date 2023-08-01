@@ -1,10 +1,11 @@
+require('dotenv').config();
 const express = require('express');
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
 const ejs = require('ejs');
 const path = require('path');
-const urlcdn = 'https://tiendas.agencsi.com'
-const cdnStorage = urlcdn + '/storage';
+const urlcdn = process.env.URL_CDN;
+const cdnStorage = process.env.CDN_STORAGE;
 const requestedDomain = 'hoppedidos.com' //req.get('host');
 
 
@@ -107,7 +108,8 @@ app.get('/catalogo.js', (req, res) => {
   res.sendFile(filePath);
   
 });
-app.get('/catalogo', async (req, res) => {
+*/
+app.get('/catalogo/', async (req, res) => {
   const requestedDomain = 'hoppedidos.com' //req.get('host');
   const productos = [
     { id: 1, nombre: 'Producto ABC 1', precio: 10 },
@@ -121,7 +123,7 @@ app.get('/catalogo', async (req, res) => {
 
   res.render('catalogo.ejs', { header, footer, content: productList, title: requestedDomain });
 });
-*/
+
 
 app.listen(3002, () => {
   console.log('Servidor de renderizado iniciado en http://localhost:3002');
