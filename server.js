@@ -6,7 +6,7 @@ const ejs = require('ejs');
 const path = require('path');
 const urlcdn =  "https://tiendas.agencsi.com";
 const cdnStorage = "https://tiendas.agencsi.com/storage";
-const requestedDomain = 'hoppedidos.com' //req.get('host');
+const requestedDomain = req.get('host');
 
 
 function generarCodigoAleatorioConTimestamp() {
