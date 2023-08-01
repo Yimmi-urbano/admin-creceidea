@@ -1,4 +1,4 @@
-require('dotenv').config();
+//require('dotenv').config();
 const express = require('express');
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
