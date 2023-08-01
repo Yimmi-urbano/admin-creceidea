@@ -1,4 +1,3 @@
-require('dotenv').config();
 const express = require('express');
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
@@ -126,6 +125,6 @@ app.get('/catalogo/', async (req, res) => {
 });
 */
 
-app.listen(3002, () => {
-  console.log('Servidor de renderizado iniciado en http://localhost:3002');
+app.listen(3305, () => {
+  console.log('Servidor de renderizado iniciado en http://localhost:3305');
 });
