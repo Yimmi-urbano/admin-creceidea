@@ -1,10 +1,11 @@
+require('dotenv').config();
 const express = require('express');
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
 const ejs = require('ejs');
 const path = require('path');
-const urlcdn = 'https://tiendas.agencsi.com';
-const cdnStorage = urlcdn + '/storage';
+const urlcdn = process.env.URL_CDN;
+const cdnStorage = process.env.CDN_STORAGE;
 const requestedDomain = 'hoppedidos.com' //req.get('host');
 
 
@@ -16,7 +17,7 @@ function generarCodigoAleatorioConTimestamp() {
 }
 
 const version = generarCodigoAleatorioConTimestamp();
-/*
+
 async function fetchAndPrintPaths() {
   try {
     const response = await fetch(`${urlcdn}/${requestedDomain}/datos/components.json?v=${version}`);
@@ -45,7 +46,6 @@ async function fetchAndPrintPaths() {
     return '';
   }
 }
-
 async function get_store() {
   try {
       const response = await fetch(`${urlcdn}/${requestedDomain}/conf.json?v=${version}`);
@@ -69,7 +69,7 @@ async function get_store() {
       return null;
   }
 }
-*/
+
 
 const app = express();
 app.set('view engine', 'ejs');
@@ -82,49 +82,24 @@ app.get('/', async (req, res) => {
   );
   const header = await ejs.renderFile(path.join(__dirname, '/views/header.ejs'));
   const footer = await ejs.renderFile(path.join(__dirname, '/views/footer.ejs'));
-  //const componentsRender = await fetchAndPrintPaths();
-  //const infoStore= await get_store();
+  const componentsRender = await fetchAndPrintPaths();
+  const infoStore= await get_store();
 
   res.render('index.ejs', {
     header,
     footer,
-   // components: componentsRender,
+    components: componentsRender,
     content: html,
     domain: requestedDomain,
     urldcdn: urlcdn,
     cdnstorage: cdnStorage,
     version,
-    //infoStore
+    infoStore
   });
 
 });
 
 
-
-
-/*
-app.get('/catalogo.js', (req, res) => {
-  const filePath = path.join(__dirname, '/views/catalogo.js');
-  res.sendFile(filePath);
-  
-});
-
-app.get('/catalogo/', async (req, res) => {
-  const requestedDomain = 'hoppedidos.com' //req.get('host');
-  const productos = [
-    { id: 1, nombre: 'Producto ABC 1', precio: 10 },
-    { id: 2, nombre: 'Producto ABC 2', precio: 15 },
-    { id: 3, nombre: 'Producto ABC 3', precio: 20 },
-  ];
-
-  const productList = await ejs.renderFile(path.join(__dirname, '/views/modulos/productos/productList.ejs'), { productos });
-  const header = await ejs.renderFile(path.join(__dirname, '/views/header.ejs'));
-  const footer = await ejs.renderFile(path.join(__dirname, '/views/footer.ejs'));
-
-  res.render('catalogo.ejs', { header, footer, content: productList, title: requestedDomain });
-});
-*/
-
-app.listen(3305, () => {
-  console.log('Servidor de renderizado iniciado en http://localhost:3305');
+app.listen(3002, () => {
+  console.log('Servidor de renderizado iniciado en http://localhost:3002');
 });
