@@ -1,1 +1,1 @@
-# application public stor
+# application public store
