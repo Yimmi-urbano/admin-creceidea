@@ -1,1 +1,1 @@
-# admincreceidea
+# application public stor
