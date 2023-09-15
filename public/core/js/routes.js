@@ -4,7 +4,7 @@ const jsonNavigation = [
       {
         "titulo": "Inicio",
         "url": "/",
-        "url_page": "./public/core/pages/home.html?v=5",
+        "url_page": "./public/core/pages/login.html?v=5",
         "destino": "_self",
         "icono": "fas fa-home",
         "orden": 1
