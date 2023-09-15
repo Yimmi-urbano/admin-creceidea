@@ -19,14 +19,34 @@ body{
 
 .logo-creceidea{
   font-family: 'Ysabeau SC', sans-serif;
-  font-size: 50px;
+  font-size: 38px;
   color: #fe292c;
 }
 .logo-creceidea .idea{
   font-family: 'Ysabeau SC', sans-serif;
-  font-size: 50px;
+  font-size: 38px;
   color: #6e6e6e;
 }
+
+
+.login-screen-page{
+
+  background-image: url(https://et-website.s3.amazonaws.com/uploads/2018/10/Llama-standing-at-Machu-Picchu-overlook-in-Peru-South-America.jpg);
+  object-fit: cover;
+  background-size: 100%;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+.card-login-screen{
+
+  max-width: 400px;
+  margin:auto;
+
+}
+.login-screen-content{
+  background-color: transparent;
+}
+
 
 :root {
   --f7-grid-gap: 16px;
