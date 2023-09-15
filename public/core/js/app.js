@@ -18,10 +18,12 @@ if (document.location.href.includes('example-preview')) {
 }
 
 // Theme
-var theme = 'auto';
+var theme = 'ios';
+/*
 if (document.location.search.indexOf('theme=') >= 0) {
   theme = document.location.search.split('theme=')[1].split('&')[0];
-}
+}*/
+
 if (document.location.search.indexOf('mode=') >= 0) {
   const mode = document.location.search.split('mode=')[1].split('&')[0];
   if (mode === 'dark') document.documentElement.classList.add('dark');

@@ -10,52 +10,10 @@ const jsonNavigation = [
         "orden": 1
       },
       {
-        "titulo": "Productos",
-        "url": "/productos/",
-        "url_page": "https://storage.googleapis.com/stores-crece/ideasprint.com.pe/theme/default/pages/home.html?v=5",
+        "titulo": "login",
+        "url": "/login",
         "destino": "_self",
-        "icono": {
-          "tipo": "fuente",
-          "valor": "fas fa-box"
-        },
-        "orden": 2,
-        "submenus": [
-          {
-            "titulo": "Nuevo Producto",
-            "url": "/productos/nuevo/",
-            "destino": "_self",
-            "icono": {
-              "tipo": "fuente",
-              "valor": "fas fa-plus"
-            },
-            "orden": 1
-          },
-          {
-            "titulo": "Administrar Productos",
-            "url": "/productos/administrar/",
-            "destino": "_self",
-            "icono": {
-              "tipo": "url",
-              "valor": "https://example.com/custom-icon.png"
-            },
-            "orden": 2
-          }
-        ]
-      },
-      {
-        "titulo": "Blog",
-        "url": "/blog",
-        "destino": "_self",
-        "icono": {
-          "tipo": "fuente",
-          "valor": "fas fa-newspaper"
-        },
-        "orden": 3
-      },
-      {
-        "titulo": "Contacto",
-        "url": "/contacto",
-        "destino": "_self",
+        "url_page": "./public/core/pages/page-login.html?v=5",
         "icono": {
           "tipo": "url",
           "valor": "https://example.com/contact-icon.png"

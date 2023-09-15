@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ysabeau+SC:wght@1;100;200;300;400;500;600;700;800;900;1000&display=swap');
+
 
 @font-face {
   font-family: 'Material Icons';
@@ -9,13 +11,21 @@
     url(../fonts/MaterialIcons-Regular.woff) format('woff'),
     url(../fonts/MaterialIcons-Regular.ttf) format('truetype');
 }
-.login-screen-content{
-background-color: #aaa;
 
-}
 
 body{
   font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.logo-creceidea{
+  font-family: 'Ysabeau SC', sans-serif;
+  font-size: 50px;
+  color: #fe292c;
+}
+.logo-creceidea .idea{
+  font-family: 'Ysabeau SC', sans-serif;
+  font-size: 50px;
+  color: #6e6e6e;
 }
 
 :root {
