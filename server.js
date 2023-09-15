@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
   const footerParams = { currentYear: new Date().getFullYear() };
 
   // Renderizar el archivo 'index.ejs' y pasar los parámetros
-  res.render('index', { title: 'Server-Side Rendering con EJS', headerParams, footerParams });
+  res.render('index', { title: 'CreceIdea', headerParams, footerParams });
 });
 
 
