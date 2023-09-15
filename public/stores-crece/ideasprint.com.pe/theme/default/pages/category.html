@@ -1,0 +1,59 @@
+<template>
+    <div class="page">
+
+      <div class="page-content">
+        <div class="row justify-content-center">
+          
+          ${products && products.map(product => $h`
+            <div class="col-50 medium-20">
+            <div class="card">
+                <div class="card-content card-content-padding">
+        
+              <img width="100%" src="${product.item_url}" alt="Producto"/>
+              <h5> ${product.item_title}</h5>
+              <p>Descripción del producto.</p>
+              <p> S/ ${product.precio_oferta_minima} </p>
+
+            </div>
+            <div class="card-footer">
+                <a href="#" class="button button-fill color-green">Añadir al carrito</a>
+            </div>
+        </div>
+    </div>
+          `)}
+        </div>
+        ${!products && $h`
+               <!-- Otherwise show preloader -->
+               <div class="block block-strong text-align-center">
+                <div class="preloader"></div>
+              </div>
+        `}
+      </div>
+    </div>
+  </template>
+  
+  <script>
+  export default (props, { $on, $f7, $update }) => {
+    let products = null;
+    const params = {
+      userId: props.id, 
+    };
+  
+    console.log(params);
+  
+    $on('pageInit', () => {
+      
+      fetch('https://api-gateway-prod.sami-shop.com/inventary/datoscatalogo/kayser.pe/categoria/hombre/pijamas?&limit=24')
+        .then((res) => res.json())
+        .then((data) => {
+          let datos = data.obj[0].datos_catalogos;
+          products = datos;
+      
+          $update();
+        });
+    });
+  
+    return $render;
+  }
+  </script>
+  

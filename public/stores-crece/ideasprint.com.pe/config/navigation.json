@@ -1,0 +1,99 @@
+[
+    {
+        "menu_principal": [
+            {
+                "titulo": "Inicio",
+                "url": "/",
+                "url_page": "http://localhost:3002/stores-crece/ideasprint.com.pe/theme/default/pages/home.html?v=5",
+                "destino": "_self",
+                "icono": "fas fa-home",
+                "orden": 1
+            },
+            {
+                "titulo": "Acerca",
+                "url": "/productos/",
+                "url_page": "https://storage.googleapis.com/stores-crece/ideasprint.com.pe/theme/default/pages/home.html?v=5",
+                "destino": "_self",
+                "icono": {
+                    "tipo": "fuente",
+                    "valor": "fas fa-box"
+                },
+                "orden": 2,
+                "submenus": [
+                    {
+                        "titulo": "Nuevo Producto",
+                        "url": "/productos/nuevo/",
+                        "destino": "_self",
+                        "icono": {
+                            "tipo": "fuente",
+                            "valor": "fas fa-plus"
+                        },
+                        "orden": 1
+                    },
+                    {
+                        "titulo": "Administrar Productos",
+                        "url": "/productos/administrar/",
+                        "destino": "_self",
+                        "icono": {
+                            "tipo": "url",
+                            "valor": "https://example.com/custom-icon.png"
+                        },
+                        "orden": 2
+                    }
+                ]
+            },
+            {
+                "titulo": "Sobre nosotros",
+                "url": "/sobre-nosotros/",
+                "url_page": "http://localhost:3002/stores-crece/ideasprint.com.pe/theme/default/pages/acerca-de-nosotros.html?v=6",
+                "destino": "_self",
+                "icono": {
+                    "tipo": "fuente",
+                    "valor": "fas fa-newspaper"
+                },
+                "orden": 3
+            },
+            {
+                "titulo": "Contacto",
+                "url": "/contacto",
+                "destino": "_self",
+                "icono": {
+                    "tipo": "url",
+                    "valor": "https://example.com/contact-icon.png"
+                },
+                "orden": 4
+            }
+        ]
+    },
+    {
+        "menu_footer": [
+            {
+                "titulo": "Inicio",
+                "url": "/inicio",
+                "destino": "_self",
+                "icono": "fas fa-home",
+                "orden": 1
+            },
+            {
+                "titulo": "Blog",
+                "url": "/blog",
+                "destino": "_self",
+                "icono": {
+                    "tipo": "fuente",
+                    "valor": "fas fa-newspaper"
+                },
+                "orden": 3
+            },
+            {
+                "titulo": "Contacto",
+                "url": "/contacto",
+                "destino": "_self",
+                "icono": {
+                    "tipo": "url",
+                    "valor": "https://example.com/contact-icon.png"
+                },
+                "orden": 4
+            }
+        ]
+    }
+]

@@ -1,0 +1,49 @@
+<template>
+  <div class="page page-home">
+
+    <div class="page-content">
+      <div class="block" style="
+      background-image: url(http://localhost:3002/stores-crece/ideasprint.com.pe/images/logo/logo_fondo.png);
+      background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center left;">
+        <div class="row no-gap">
+          <div class="col-100 medium-35"></div>
+          <div class="col-100 medium-65">
+            <div class="modulo-slider">
+              <swiper-container id="slider92" data-brick="slider" slides_m="1" slides_d="1" init="false"></swiper-container>
+              <div class="swiper-button-next"></div>
+              <div class="swiper-button-prev"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="block xs-only">
+        <div class="row no-gap">
+          <div class="col-100">
+            <ul class="store-menu" id="menuHome" data-menu="menu_principal"></ul>
+          </div>
+        </div>
+      </div>
+      <div class="block pl-20 pr-20"> 
+        <div class="row">
+          <div class="col-50 medium-25"> <div class="card"> <img width="100%" src="http://localhost:3002/stores-crece/ideasprint.com.pe/images/btn_001.png"/></div> </div>
+          <div class="col-50 medium-25"> <div class="card"> <img width="100%" src="http://localhost:3002/stores-crece/ideasprint.com.pe/images/btn_002.png"/></div> </div>
+          <div class="col-50 medium-25"> <div class="card"> <img width="100%" src="http://localhost:3002/stores-crece/ideasprint.com.pe/images/btn_003.png"/></div> </div>
+          <div class="col-50 medium-25"> <div class="card"> <img width="100%" src="http://localhost:3002/stores-crece/ideasprint.com.pe/images/btn_004.png"/></div> </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</template>
+<script>
+
+  export default (props, { $f7, $on }) => {
+    $on('pageInit', () => {
+     
+    });
+    $on('pageAfterOut', () => { });
+    return $render;
+  }
+</script>

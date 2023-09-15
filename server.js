@@ -1,105 +1,29 @@
-require('dotenv').config();
 const express = require('express');
-const React = require('react');
-const ReactDOMServer = require('react-dom/server');
 const ejs = require('ejs');
-const path = require('path');
-const urlcdn = process.env.URL_CDN;
-const cdnStorage = process.env.CDN_STORAGE;
-const requestedDomain = 'hoppedidos.com' //req.get('host');
-
-
-function generarCodigoAleatorioConTimestamp() {
-  const codigoAleatorio = Math.floor(Math.random() * (999999 - 100000 + 1)) + 100000;
-  const timestamp = Date.now();
-  const codigoFinal = `${codigoAleatorio}${timestamp}`;
-  return codigoFinal;
-}
-
-const version = generarCodigoAleatorioConTimestamp();
-
-async function fetchAndPrintPaths() {
-  try {
-    const response = await fetch(`${urlcdn}/${requestedDomain}/datos/components.json?v=${version}`);
-    const data = await response.json();
-
-    if (Array.isArray(data?.components)) {
-      const cdnOptions = {
-        local: `${urlcdn}/${requestedDomain}`,
-        central: cdnStorage,
-      };
-
-      const scripts = data.components
-        .filter(component => component.status === true)
-        .map(component => {
-          const cdnURL = cdnOptions[component.path_cdn] || cdnOptions['central'];
-          return `<script src="${cdnURL}/${component.path}?v=${version}"></script>`;
-        })
-        .join('\n');
-
-      return scripts;
-    } else {
-      return '';
-    }
-  } catch (error) {
-    console.error('Error fetching data:', error);
-    return '';
-  }
-}
-async function get_store() {
-  try {
-      const response = await fetch(`${urlcdn}/${requestedDomain}/conf.json?v=${version}`);
-      const data = await response.json();
-      const field_info = data.information[0];
-
-      const templateData = {
-          id_client: field_info.id_client,
-          title: field_info.title,
-          description: field_info.description,
-          imagen_default: field_info.imagen_default,
-          status: field_info.status,
-          plan: field_info.plan,
-          theme: field_info.theme,
-          path_cdn: field_info.path_cdn,
-      };
-
-      return templateData;
-  } catch (error) {
-      console.error('Error al obtener los datos del endpoint:', error.message);
-      return null;
-  }
-}
-
+const path = require('path'); // Importa el módulo 'path'
 
 const app = express();
+
+// Configurar EJS como motor de plantillas
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, '/views'));
+app.set('views', __dirname + '/views');
 
-app.get('/', async (req, res) => {
- 
-  const html = ReactDOMServer.renderToString(
-    React.createElement('h1', null, '¡Hola desde el servidor! ' + requestedDomain)
-  );
-  const header = await ejs.renderFile(path.join(__dirname, '/views/header.ejs'));
-  const footer = await ejs.renderFile(path.join(__dirname, '/views/footer.ejs'));
-  const componentsRender = await fetchAndPrintPaths();
-  const infoStore= await get_store();
+// Definir una ruta para la página principal
+app.get('/', (req, res) => {
+  // Definir los parámetros que deseas enviar al encabezado y al pie de página
+  const headerParams = { username: 'Usuario123' };
+  const footerParams = { currentYear: new Date().getFullYear() };
 
-  res.render('index.ejs', {
-    header,
-    footer,
-    components: componentsRender,
-    content: html,
-    domain: requestedDomain,
-    urldcdn: urlcdn,
-    cdnstorage: cdnStorage,
-    version,
-    infoStore
-  });
-
+  // Renderizar el archivo 'index.ejs' y pasar los parámetros
+  res.render('index', { title: 'Server-Side Rendering con EJS', headerParams, footerParams });
 });
 
 
-app.listen(3002, () => {
-  console.log('Servidor de renderizado iniciado en http://localhost:3002');
+app.use('/public', express.static(path.join(__dirname, 'public')));
+
+
+// Iniciar el servidor en el puerto 3000
+const port = 3000;
+app.listen(port, () => {
+  console.log(`Servidor escuchando en el puerto ${port}`);
 });

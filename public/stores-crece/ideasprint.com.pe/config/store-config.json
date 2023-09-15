@@ -1,0 +1,17 @@
+[
+  {
+    "status": true,
+    "message": "Consulta realizada con exito",
+    "obj": [
+      {
+        "store_title": "Ideas Print Yimmi",
+        "desc": "Esta es mi primera tienda virutal",
+        "phone": "999888777",
+        "type_service": "ecommerce",
+        "theme":"default",
+        "status": true,
+        "plan": "free"
+      }
+    ]
+  }
+]

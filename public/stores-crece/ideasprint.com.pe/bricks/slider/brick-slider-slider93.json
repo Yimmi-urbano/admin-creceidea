@@ -1,0 +1,36 @@
+{
+    "content": [
+        {
+            "imagen": "https://placehold.co/900x400/000000/FFF?text=1",
+            "titulo": "Oferta Especial",
+            "descripcion": "¡Ahorra un 20% en todos los productos!",
+            "enlace": "/about/",
+            "orden": 4,
+            "status": true
+        },
+        {
+            "imagen": "https://placehold.co/900x400?text=2",
+            "titulo": "Nuevos Lanzamientos",
+            "descripcion": "Descubre nuestros productos más recientes",
+            "enlace": "/productos/",
+            "orden": 2,
+            "status": true
+        },
+        {
+            "imagen": "https://placehold.co/900x400/000000/FFF?text=3",
+            "titulo": "Envío Gratuito",
+            "descripcion": "Compras superiores a $50 reciben envío gratuito",
+            "enlace": "https://www.ejemplo.com/envio-gratuito",
+            "orden": 3,
+            "status": true
+        },
+        {
+            "imagen": "https://placehold.co/900x400?text=4",
+            "titulo": "¡Oferta Limitada!",
+            "descripcion": "Obtén un regalo gratis con tu compra",
+            "enlace": "https://www.ejemplo.com/oferta-limitada",
+            "orden": 1,
+            "status": true
+        }
+    ]
+}
