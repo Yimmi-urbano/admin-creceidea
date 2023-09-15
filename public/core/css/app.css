@@ -46,7 +46,16 @@ body{
 .login-screen-content{
   background-color: transparent;
 }
+#login-backend{
 
+  width: 40%;
+  margin: auto;
+  background-color: #fe292b;
+
+}
+.ios .item-input-outline.item-content .item-title+.item-input-wrap {
+  margin-top: -8px;
+}
 
 :root {
   --f7-grid-gap: 16px;
