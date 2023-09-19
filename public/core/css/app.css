@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Ysabeau+SC:wght@1;100;200;300;400;500;600;700;800;900;1000&display=swap');
 
+body{
+  font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+}
 
 @font-face {
   font-family: 'Material Icons';
@@ -12,20 +15,47 @@
     url(../fonts/MaterialIcons-Regular.ttf) format('truetype');
 }
 
-
-body{
-  font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+@font-face {
+  font-family: 'ecom';
+  src: url('../fonts/ecom.eot');
+  src: url('../fonts/ecom.eot') format('embedded-opentype'), url('../fonts/ecom.woff2') format('woff2'), url('../fonts/ecom.woff') format('woff'), url('../fonts/ecom.ttf') format('truetype'), url('../fonts/ecom.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
+
+.icon {
+  display: inline-block;
+  font: normal normal normal 32px/1 'ecom';
+  speak: none;
+  text-transform: none;
+  /* Better Font Rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+
+.icon-letter::before {
+  content: "\ea01";
+}
+
+.icon-lock::before {
+  content: "\ea02";
+}
+
+
 
 .logo-creceidea{
-  font-family: 'Ysabeau SC', sans-serif;
+  font-family: 'Goldman', cursive;
   font-size: 38px;
-  color: #fe292c;
+  color: #d0134b;
 }
 .logo-creceidea .idea{
-  font-family: 'Ysabeau SC', sans-serif;
+  font-family: 'Goldman', cursive;
   font-size: 38px;
-  color: #6e6e6e;
+  color: #52575d;
+  font-weight: normal;
 }
 
 
@@ -46,12 +76,20 @@ body{
 .login-screen-content{
   background-color: transparent;
 }
-#login-backend{
-
-  width: 40%;
+#login-backend {
+  width: 50%;
   margin: auto;
-  background-color: #fe292b;
+  background-color: #d0134b;
+  height: 35px;
+}
+.icon-sesion i{
+color: #d0134b;
+  font-size: 15px;
 
+}
+
+.ios .item-input .item-media {
+  align-self: initial; 
 }
 .ios .item-input-outline.item-content .item-title+.item-input-wrap {
   margin-top: -8px;
