@@ -91,9 +91,7 @@ color: #d0134b;
 .ios .item-input .item-media {
   align-self: initial; 
 }
-.ios .item-input-outline.item-content .item-title+.item-input-wrap {
-  margin-top: -8px;
-}
+
 
 :root {
   --f7-grid-gap: 16px;
