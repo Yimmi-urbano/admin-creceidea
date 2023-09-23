@@ -3,6 +3,8 @@
 
 body {
   font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+    text-rendering: optimizelegibility;
 }
 
 @font-face {
@@ -65,7 +67,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.login-screen-page .list-strong-ios{
 
+  margin: auto !important;
+
+}
 
 
 .icon-letter::before {
@@ -115,16 +121,24 @@ body {
 
 
 #login-backend {
-  width: 50%;
+  width: 290px;
+  font-size: 0.875rem;
   margin: auto;
   background: linear-gradient(45deg, var(--chathams-blue), var(--eastern-blue));
   height: 35px;
+  text-transform: initial;
+  letter-spacing: 0.16px;
 }
 
 .icon-sesion i {
   color: var(--eastern-blue);
   font-size: 15px;
+}
 
+.item-input-wrap input{
+  font-family: 'IBM Plex Mono';
+  font-size: 0.83em !important;
+  letter-spacing: 0.10px;
 }
 
 .ios .item-input .item-media {
@@ -136,6 +150,7 @@ body {
   --f7-grid-gap: 16px;
   --f7-grid-row-gap: 0px;
   --f7-grid-resize-handler-bg-color: rgba(0, 0, 0, 0.35);
+  --f7-input-text-color: var(--chathams-blue)
 }
 
 :root .dark,
