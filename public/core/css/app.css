@@ -177,24 +177,29 @@ body {
   background-color: #e4f2f1;
 }
 
-.toolbar footer{
+
+
+.toolbar footer {
   width: 95%;
   height: 100%;
   margin: auto;
   border-radius: 15px;
-  background-color: #135bc7 !important;
-  color: #fff;
-  background-image: linear-gradient(307deg, #00e6db, #199ed9 57%, #135bc7);
-}
-.tabbar-icons .link, .tabbar-icons .tab-link {
+  background-color: #608596 !important;
   color: #fff;
 }
-.toolbar {
 
+.tabbar-icons .link,
+.tabbar-icons .tab-link {
+  color: #fff;
+}
+
+.toolbar {
+  backdrop-filter: none !important;;
   bottom: 10px !important;
   background-color: transparent !important;
   border: 0px !important;
 }
+
 .dashboard-page .estadisticas {
   background-color: #ffffff;
   border-radius: 0px
@@ -2320,4 +2325,27 @@ code {
 
   text-align: center;
   padding: 15%;
+}
+
+.toolbar::before{
+  display: none;
+}
+
+.mobile-only {
+  display: flex; 
+}
+
+.desktop-only {
+  display: none;
+}
+
+
+@media (min-width: 768px) {
+  .mobile-only {
+    display: none; 
+  }
+
+  .desktop-only {
+    display: flex; 
+  }
 }
