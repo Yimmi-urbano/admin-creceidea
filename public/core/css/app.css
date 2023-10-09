@@ -2332,11 +2332,15 @@ code {
 }
 
 .mobile-only {
-  display: flex; 
+  display: block; 
 }
 
 .desktop-only {
   display: none;
+}
+
+.dashboard-page .estadisticas {
+  background-color: #a3c5d4;
 }
 
 
@@ -2346,6 +2350,6 @@ code {
   }
 
   .desktop-only {
-    display: flex; 
+    display: block; 
   }
 }
