@@ -194,7 +194,8 @@ body {
 }
 
 .toolbar {
-  backdrop-filter: none !important;;
+  backdrop-filter: none !important;
+  ;
   bottom: 10px !important;
   background-color: transparent !important;
   border: 0px !important;
@@ -2327,12 +2328,12 @@ code {
   padding: 15%;
 }
 
-.toolbar::before{
+.toolbar::before {
   display: none;
 }
 
 .mobile-only {
-  display: block; 
+  display: block;
 }
 
 .desktop-only {
@@ -2346,10 +2347,10 @@ code {
 
 @media (min-width: 768px) {
   .mobile-only {
-    display: none; 
+    display: none;
   }
 
   .desktop-only {
-    display: block; 
+    display: block;
   }
 }
