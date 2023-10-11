@@ -2354,3 +2354,17 @@ code {
     display: block;
   }
 }
+
+.mserror{
+
+  text-align: center;
+  font-size: 12px;
+  color: #cd1313;
+}
+.menu-list{
+  margin: 0px;
+}
+#menuOffice::before,#menuOffice::after{display: none}
+.list:not(.media-list) .accordion-item:not(.media-item)>.item-link .item-inner:before{
+  color: #3d3d3d;
+}

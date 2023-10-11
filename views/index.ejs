@@ -8,7 +8,8 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="theme-color" content="#fff">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,200,0,0" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,200,0,0" />
   <title>
     <%= title %>
   </title>
@@ -25,10 +26,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&display=swap" rel="stylesheet">
 
 
- <!-- Responsive -->
+  <!-- Responsive -->
   <link rel="stylesheet" type="text/css" href="public/core/css/desktop.css" media="screen and (min-width: 768px)">
   <link rel="stylesheet" type="text/css" href="public/core/css/mobile.css" media="screen and (max-width: 767px)">
-  
+
 
   <!-- Iconos -->
   <link rel="apple-touch-icon" href="img/f7-icon-square.png">
@@ -36,25 +37,36 @@
 </head>
 
 <body>
-
-  <div id="app">
  
-    <div class="page">
-
-
-      <div class="view view-main view-init safe-areas" data-master-detail-breakpoint="768" data-url="/">
+    <div id="app">
+ 
+      <div class="panel panel-left panel-floating">
+        <div class="panel-content">
+          <div class="logo-content">
+            <img width="100%" src="https://agencsi.com/wp-content/uploads/2021/08/logo-oficial-agencsi.svg" />
+          </div>
+          <div class="card content-sidebar">
+            <div class="card-body">
+          <div class="list list-strong-ios list-outline-ios menu-list">
+          <ul id="menuOffice"></ul>
+        </div>
+      </div>
+    </div>
+        </div>
+      </div>
+      
+     
+      <div class="view view-main view-init" data-master-detail-breakpoint="768" data-url="/">
         <%- include('header') %>
-
         <%- include('footer') %>
       </div>
-    
     </div>
-  </div>
 
   <!-- Scripts -->
   <script defer src="public/core/js/framework7-bundle.min.js"></script>
   <script defer src="public/core/js/store.js"></script>
   <script defer src="public/core/js/routes.js"></script>
-  <script defer src="public/core/js/app.js"></script>
+  <script defer type="module" src="public/core/js/app.js"></script>
 </body>
+
 </html>

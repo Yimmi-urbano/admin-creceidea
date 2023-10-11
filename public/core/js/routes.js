@@ -1,17 +1,36 @@
+
+const routes = [];
+
 const jsonNavigation = [
   {
     "menu_principal": [
       {
         "titulo": "Inicio",
-        "url": "/",
+        "url": "/dashboard",
         "url_page": "./public/core/pages/dashboard.html?v=1",
         "destino": "_self",
         "icono": "fas fa-home",
         "orden": 1
       },
       {
+        "titulo": "Inicio",
+        "url": "/servicios/dominios",
+        "url_page": "./public/core/pages/home.html?v=1",
+        "destino": "_self",
+        "icono": "fas fa-home",
+        "orden": 1
+      },
+      {
+        "titulo": "Inicio",
+        "url": "/servicios/hosting",
+        "url_page": "./public/core/pages/home.html?v=1",
+        "destino": "_self",
+        "icono": "fas fa-home",
+        "orden": 1
+      },
+      {
         "titulo": "login",
-        "url": "/login",
+        "url": "/",
         "destino": "_self",
         "url_page": "./public/core/pages/page-login.html?v=5",
         "icono": {
@@ -55,44 +74,38 @@ const jsonNavigation = [
   }
 ];
 
-// Función para configurar los eventos pageAfterIn y pageInit para una URL específica
 function configurarEventosParaURL(url) {
   switch (url) {
     case '/productos':
       return {
         on: {
           pageAfterIn: function (event, handler) {
-            // Personaliza la lógica para pageAfterIn de '/productos/nuevo' aquí
           },
           pageInit: function (event, handler) {
             console.log('Página cargada al iniciar (productos nuevo)');
-            // Personaliza la lógica para pageInit de '/productos/nuevo' aquí
           },
         },
       };
-    case '/':
+    case '/login':
       return {
         on: {
-          pageAfterIn: function (event, handler) {
-            // Personaliza la lógica para pageAfterIn de '/otra-url' aquí
+          pageAfterIn:  function (event, handler) {
           },
-          pageInit: function (event, handler) {
-            console.log('Página cargada al iniciar (otra-url)');
-            // Personaliza la lógica para pageInit de '/otra-url' aquí
+          pageInit:  function (event, handler) {
           },
         },
       };
     default:
       return {
         on: {
-          pageAfterIn: function (event, handler) {},
-          pageInit: function (event, handler) {},
+          pageAfterIn: function (event, handler) { },
+          pageInit: function (event, handler) { },
         },
       };
   }
 }
 
-const routes = [];
+
 
 jsonNavigation.forEach(menu => {
   for (const key in menu) {
@@ -100,10 +113,11 @@ jsonNavigation.forEach(menu => {
     items.forEach(item => {
       const route = {
         path: item.url,
+        name:item.titulo,
         componentUrl: `${item.url_page}`,
-      
-          ...configurarEventosParaURL(item.url), // Configurar eventos según la URL
-        
+
+        ...configurarEventosParaURL(item.url),
+
       };
 
       routes.push(route);
@@ -112,10 +126,11 @@ jsonNavigation.forEach(menu => {
         item.submenus.forEach(submenu => {
           const submenuRoute = {
             path: submenu.url,
+            name:item.titulo,
             componentUrl: `pages${submenu.url}.html`,
-        
-              ...configurarEventosParaURL(submenu.url), // Configurar eventos para la URL del submenu
-            
+
+            ...configurarEventosParaURL(submenu.url),
+
           };
 
           routes.push(submenuRoute);
@@ -125,5 +140,3 @@ jsonNavigation.forEach(menu => {
   }
 });
 
-// Imprimir las rutas generadas
-console.log(routes);

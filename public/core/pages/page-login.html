@@ -1,69 +1,94 @@
 <template>
-    <div class="page no-toolbar no-navbar no-swipeback login-screen-page">
+  <div class="page no-toolbar no-navbar no-panel no-swipeback login-screen-page" >
 
-            <div class="page-content login-screen-content">
-                
-                <div class="login-screen-title">
+    <div class="page-content login-screen-content">
 
-                    <div class="logo-creceidea">
-                        CRECE<span class="idea">IDEA</span>
-                    </div>
+      <div class="login-screen-title">
 
+        <div class="logo-creceidea">
+          CRECE<span class="idea">IDEA</span>
+        </div>
+
+      </div>
+      <div>
+        <div class="list list-strong-ios list-dividers-ios inset-ios">
+          <ul>
+            <li class="item-content item-input item-input-outline">
+              <div class="item-media icon-sesion">
+                <i class="icon icon-letter"></i>
+              </div>
+              <div class="item-inner">
+                <div class="item-title item-label">E-mail</div>
+                <div class="item-input-wrap">
+                  <input type="text" id="user_email" placeholder="Tu e-mail" />
+                  <span class="input-clear-button"></span>
                 </div>
-                <form>
-                    <div class="list list-strong-ios list-dividers-ios inset-ios">
-                        <ul>
-                            <li class="item-content item-input item-input-outline">
-                                <div class="item-media icon-sesion">
-                                  <i class="icon icon-letter"></i>
-                                </div>
-                                <div class="item-inner">
-                                  <div class="item-title item-label">E-mail</div>
-                                  <div class="item-input-wrap">
-                                    <input type="text" placeholder="Tu e-mail"/>
-                                    <span class="input-clear-button"></span>
-                                  </div>
-                                </div>
-                              </li>
-                              <li class="item-content item-input item-input-outline">
-                                <div class="item-media icon-sesion">
-                                  <i class="icon icon-lock"></i>
-                                </div>
-                                <div class="item-inner">
-                                  <div class="item-title item-label">Contraseña</div>
-                                  <div class="item-input-wrap">
-                                    <input type="password" placeholder="Tu contraseña"/>
-                                    <span class="input-clear-button"></span>
-                                  </div>
-                                </div>
-                              </li>
-                        </ul>
-                    </div>
-                    <div class="list inset">
-                        <ul>
-                            <li>   <button id="login-backend" class="button button-fill">Iniciar sesión</button></li>
-                        </ul>
-                        <div class="block-footer">Acepta los terminos y condiciones.</div>
-                    </div>
-                </form>
-            </div>
-
-       
-
+              </div>
+            </li>
+            <li class="item-content item-input item-input-outline">
+              <div class="item-media icon-sesion">
+                <i class="icon icon-lock"></i>
+              </div>
+              <div class="item-inner">
+                <div class="item-title item-label">Contraseña</div>
+                <div class="item-input-wrap">
+                  <input type="password" id="user_password" placeholder="Tu contraseña" />
+                  <span class="input-clear-button"></span>
+                </div>
+              </div>
+              
+            </li>
+            <div class="mserror"></div>
+          </ul>
+        </div>
+        <div class="list inset">
+          <ul>
+            <li> <button id="login-backend" @click=${signIn} class="button button-fill">Iniciar sesión</button></li>
+          </ul>
+          <div class="block-footer">Acepta los terminos y condiciones.</div>
+        </div>
+      </div>
     </div>
+
+
+
+  </div>
 </template>
 <script>
-    export default (props, { $, $f7, $f7router }) => {
-        const signIn = () => {
-            let username = $('input#demo-username-2').val();
-            let password = $('input#demo-password-2').val();
-            $f7.dialog.alert('Username: ' + username + '<br />Password: ' + password, function () {
-                $f7.loginScreen.close();
-                $f7router.back();
-            })
-        }
 
-        return $render;
+
+  export default (props, { $, $f7, $f7router }) => {
+
+    const validarDatos = (datos) => {
+      if (datos && datos.token && datos.roleId) {
+        return true;
+      } else {
+        return false;
+      }
     };
+
+    const signIn = async () => {
+      let username = $('input#user_email').val();
+      let password = $('input#user_password').val();
+      $f7.preloader.show()
+
+      const authCheck = await loginAuth(username, password)
+      const isValid = validarDatos(authCheck);
+
+
+      if (isValid) {
+        $f7router.navigate('/dashboard')
+        $('.mserror').text(' ')
+        sessionStorage.setItem('type_user', authCheck.roleId);
+        $f7.preloader.hide()
+      }else{
+        $f7.preloader.hide()
+        $('.mserror').text('Tus credenciales son incorrectas.')
+      }
+
+    }
+
+    return $render;
+  };
 
 </script>
