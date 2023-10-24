@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 
 
 app.use('/public', express.static(path.join(__dirname, 'public')));
-const port = 3000;
+const port = 3120;
 app.listen(port, () => {
   console.log(`Servidor escuchando en el puerto ${port}`);
 });

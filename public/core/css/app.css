@@ -16,7 +16,7 @@
 }
 
 .menu-list {
-  color: #3d3d3d;
+  color: #374d6a;
 }
 
 .menu-list .item-selected.item-link {
@@ -31,7 +31,7 @@
 .menu-list .item-selected .item-subtitle,
 .menu-list .item-selected .item-text,
 .menu-list .item-selected .item-title {
-  color: #3d3d3d;
+  color: #374d6a;
 }
 
 .content-sidebar .list .item-content,
@@ -158,7 +158,7 @@ body {
 .ios .list-strong-ios .item-input-outline .item-label {
 
   background: #ffffff !important;
-  color: #144162;
+  color: #374d6a;
 }
 
 .item-input-outline.item-content::after {
@@ -222,7 +222,7 @@ body {
   width: 290px;
   font-size: 0.875rem;
   margin: auto;
-  background: linear-gradient(45deg, var(--chathams-blue), var(--eastern-blue));
+  background: linear-gradient(45deg, var(--color-second), var(--color-tercero));
   height: 35px;
   text-transform: initial;
   letter-spacing: 0.16px;

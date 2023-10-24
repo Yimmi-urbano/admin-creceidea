@@ -1,12 +1,12 @@
 <template>
-  <div class="page no-toolbar no-navbar no-panel no-swipeback login-screen-page" >
+  <div class="page no-toolbar no-navbar no-panel no-swipeback login-screen-page">
 
     <div class="page-content login-screen-content">
 
       <div class="login-screen-title">
 
         <div class="logo-creceidea">
-          CRECE<span class="idea">IDEA</span>
+          <img width="270px" src="public/core/images/logo_creceidea.png" />
         </div>
 
       </div>
@@ -36,7 +36,7 @@
                   <span class="input-clear-button"></span>
                 </div>
               </div>
-              
+
             </li>
             <div class="mserror"></div>
           </ul>
@@ -80,8 +80,9 @@
         $f7router.navigate('/dashboard')
         $('.mserror').text(' ')
         sessionStorage.setItem('type_user', authCheck.roleId);
+        sessionStorage.setItem('token', authCheck.token);
         $f7.preloader.hide()
-      }else{
+      } else {
         $f7.preloader.hide()
         $('.mserror').text('Tus credenciales son incorrectas.')
       }
