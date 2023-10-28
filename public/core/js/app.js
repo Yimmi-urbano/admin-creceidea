@@ -1,13 +1,12 @@
-import { loginAuth,checkLogin,getInfoCompany } from '../../modulos/login/session.js';
 import { fetchOptions, generateRoutes, generarMenu } from '../../modulos/navigation/index.js';
+import { loginAuth, checkLogin, getInfoCompany } from '../../modulos/login/session.js';
+import { openLoader, closeLoader } from './util.js'
 
 const idEmpresa = 44494994;
 
-const sysRoutes = await fetchOptions(idEmpresa)
-  .then(resultado => {
+const sysRoutes = await fetchOptions(idEmpresa).then(resultado => {
     return generateRoutes(resultado)
-  })
-  .catch(error => {
+  }).catch(error => {
     console.log("Error:", error);
   });
 
@@ -23,16 +22,36 @@ function menuPanel() {
 
 }
 
+async function redirectLogin() {
+  const isLoggedIn = await checkLogin();
+  try {
+
+    if (!isLoggedIn) {
+
+      setTimeout(function () {
+        app.view.main.router.navigate('/login/');
+      }, 100);
+
+      return;
+    }
+  } catch (error) {
+
+    console.error('Error checking login:', error);
+  }
+
+}
+
 var $ = Dom7;
 var theme = 'ios';
 var app = new Framework7({
   el: '#app',
+  routes: sysRoutes,
   theme,
   view: {
     browserHistory: true,
   },
-  store: store,
-  routes: sysRoutes,
+  utils: { closeLoader, openLoader },
+ 
   popup: {
     closeOnEscape: true,
   },
@@ -51,10 +70,10 @@ var app = new Framework7({
 });
 
 
-app.on('pageAfterIn', function (page) {
+window.app = app;
 
-  checkLogin()
-  getInfoCompany()
+
+app.on('pageAfterIn', async function (page) {
 
   if (page.route.route.path === '/login') {
     window.loginAuth = loginAuth;
@@ -71,6 +90,10 @@ app.on('pageAfterIn', function (page) {
       },
       visibleBreakpoint: 1024
     })
+
+    redirectLogin()
+    getInfoCompany()
+
   }
 });
 

@@ -74,7 +74,6 @@ export function generateRoutes(menuData) {
         menuData.menu_panel.push(menuItem);
     });
 
-    console.log(menuData)
 
     const routes = [];
 
@@ -168,11 +167,13 @@ export function generarMenu(menuData) {
     menuData.menu_panel.sort((a, b) => a.orden - b.orden);
 
     const menuContainer = document.querySelector('#menuOffice');
+   
 
     menuData.menu_panel.forEach(option => {
         if (option.estado !== "Activo") {
             return;
         }
+       
         const menuItem = document.createElement('li');
         const menuLink = document.createElement('a');
         menuLink.classList.add('item-content', 'item-link');
@@ -217,7 +218,7 @@ export function generarMenu(menuData) {
             submenuContent.appendChild(submenuList);
             menuItem.appendChild(submenuContent);
         }
-
+       
         menuContainer.appendChild(menuItem);
     });
 

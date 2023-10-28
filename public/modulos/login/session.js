@@ -39,17 +39,15 @@ export async function loginAuth(username, password) {
 
 }
 
-export async function checkLogin() {
-
+export async function checkLogin(app) {
   const type_user = sessionStorage.getItem('type_user');
-
-  console.log(type_user)
-
+  
+  return type_user !== null;
 }
 
+
+
 export async function getInfoCompany(email_primary){
-
-
   var requestOptions = {
     method: 'GET',
     redirect: 'follow'
@@ -59,7 +57,5 @@ export async function getInfoCompany(email_primary){
     .then(response => response.json())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
-
-
 }
 

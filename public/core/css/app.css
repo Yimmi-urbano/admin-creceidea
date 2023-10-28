@@ -223,9 +223,10 @@ body {
   font-size: 0.875rem;
   margin: auto;
   background: linear-gradient(45deg, var(--color-second), var(--color-tercero));
-  height: 35px;
+  height: 40px;
   text-transform: initial;
   letter-spacing: 0.16px;
+  border-radius: 10px;
 }
 
 .icon-sesion i {
@@ -2367,4 +2368,13 @@ code {
 #menuOffice::before,#menuOffice::after{display: none}
 .list:not(.media-list) .accordion-item:not(.media-item)>.item-link .item-inner:before{
   color: #3d3d3d;
+}
+
+.dialog-backdrop{
+  background: rgb(255 255 255 / 60%);
+  backdrop-filter: grayscale(100%) blur(1.5px);
+}
+.custom-loader{
+  background-color: transparent !important;
+  backdrop-filter: initial !important;
 }

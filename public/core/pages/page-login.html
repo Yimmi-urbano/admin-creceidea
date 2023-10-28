@@ -1,3 +1,4 @@
+
 <template>
   <div class="page no-toolbar no-navbar no-panel no-swipeback login-screen-page">
 
@@ -45,7 +46,7 @@
           <ul>
             <li> <button id="login-backend" @click=${signIn} class="button button-fill">Iniciar sesión</button></li>
           </ul>
-          <div class="block-footer">Acepta los terminos y condiciones.</div>
+          <div class="block-footer">Recuperar clave</div>
         </div>
       </div>
     </div>
@@ -54,8 +55,8 @@
 
   </div>
 </template>
-<script>
 
+<script>
 
   export default (props, { $, $f7, $f7router }) => {
 
@@ -70,7 +71,8 @@
     const signIn = async () => {
       let username = $('input#user_email').val();
       let password = $('input#user_password').val();
-      $f7.preloader.show()
+  
+      $f7.params.utils.openLoader()
 
       const authCheck = await loginAuth(username, password)
       const isValid = validarDatos(authCheck);
@@ -81,9 +83,9 @@
         $('.mserror').text(' ')
         sessionStorage.setItem('type_user', authCheck.roleId);
         sessionStorage.setItem('token', authCheck.token);
-        $f7.preloader.hide()
+        $f7.params.utils.closeLoader();
       } else {
-        $f7.preloader.hide()
+        $f7.params.utils.closeLoader();
         $('.mserror').text('Tus credenciales son incorrectas.')
       }
 
