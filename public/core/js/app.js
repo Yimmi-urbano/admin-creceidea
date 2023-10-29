@@ -5,10 +5,10 @@ import { openLoader, closeLoader } from './util.js'
 const idEmpresa = 44494994;
 
 const sysRoutes = await fetchOptions(idEmpresa).then(resultado => {
-    return generateRoutes(resultado)
-  }).catch(error => {
-    console.log("Error:", error);
-  });
+  return generateRoutes(resultado)
+}).catch(error => {
+  console.log("Error:", error);
+});
 
 function menuPanel() {
 
@@ -33,6 +33,21 @@ async function redirectLogin() {
       }, 100);
 
       return;
+    } else {
+
+
+      $('.panel.panel-left').show()
+      app.panel.create({
+        el: '.panel-left',
+        on: {
+          opened: function () {
+            menuPanel()
+          }
+        },
+        visibleBreakpoint: 1024
+      })
+
+
     }
   } catch (error) {
 
@@ -51,7 +66,7 @@ var app = new Framework7({
     browserHistory: true,
   },
   utils: { closeLoader, openLoader },
- 
+
   popup: {
     closeOnEscape: true,
   },
@@ -80,17 +95,6 @@ app.on('pageAfterIn', async function (page) {
     $('.panel.panel-left').hide()
     $('.view.view-main').removeAttr('style')
   } else {
-    $('.panel.panel-left').show()
-    app.panel.create({
-      el: '.panel-left',
-      on: {
-        opened: function () {
-          menuPanel()
-        }
-      },
-      visibleBreakpoint: 1024
-    })
-
     redirectLogin()
     getInfoCompany()
 

@@ -167,8 +167,7 @@ export function generarMenu(menuData) {
     menuData.menu_panel.sort((a, b) => a.orden - b.orden);
 
     const menuContainer = document.querySelector('#menuOffice');
-   
-
+    menuContainer.innerHTML = '';
     menuData.menu_panel.forEach(option => {
         if (option.estado !== "Activo") {
             return;
