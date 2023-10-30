@@ -1,5 +1,5 @@
 import { fetchOptions, generateRoutes, generarMenu } from '../../modulos/navigation/index.js';
-import { loginAuth, checkLogin, getInfoCompany } from '../../modulos/login/session.js';
+import { loginAuth, checkLogin, getInfoCompany,registerUser } from '../../modulos/login/session.js';
 import { openLoader, closeLoader } from './util.js'
 
 const idEmpresa = 44494994;
@@ -65,7 +65,7 @@ var app = new Framework7({
   view: {
     browserHistory: true,
   },
-  utils: { closeLoader, openLoader },
+  utils: { closeLoader, openLoader, registerUser },
 
   popup: {
     closeOnEscape: true,
@@ -90,13 +90,15 @@ window.app = app;
 
 app.on('pageAfterIn', async function (page) {
 
-  if (page.route.route.path === '/login') {
+  if (page.route.route.path === '/login' || page.route.route.path === '/register') {
     window.loginAuth = loginAuth;
     $('.panel.panel-left').hide()
+    $('footer').hide()
     $('.view.view-main').removeAttr('style')
   } else {
     redirectLogin()
     getInfoCompany()
+    $('footer').show()
 
   }
 });

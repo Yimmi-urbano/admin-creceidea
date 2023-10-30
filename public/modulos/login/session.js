@@ -21,8 +21,6 @@ async function realizarSolicitudFetch(url, datos, metodo = 'POST') {
   }
 }
 
-
-
 export async function loginAuth(username, password) {
 
   var datos = {
@@ -41,11 +39,8 @@ export async function loginAuth(username, password) {
 
 export async function checkLogin(app) {
   const type_user = sessionStorage.getItem('type_user');
-  
   return type_user !== null;
 }
-
-
 
 export async function getInfoCompany(email_primary){
   var requestOptions = {
@@ -59,3 +54,22 @@ export async function getInfoCompany(email_primary){
     .catch(error => console.log('error', error));
 }
 
+export async function registerUser(name,email,phone,password,doc_dni,role_id) {
+  
+  var datos = {
+    "name": name,
+    "phonecell":phone,
+    "email": email,
+    "dni":doc_dni,
+    "password": password,
+    "role_id":role_id
+  };
+
+  try {
+    const resultado = await realizarSolicitudFetch("https://ag-auth-78e557894804.herokuapp.com/auth/register", datos);
+    return resultado;
+  } catch (error) {
+    console.log('Error en la solicitud:', error);
+  }
+
+}

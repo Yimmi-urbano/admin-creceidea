@@ -66,6 +66,17 @@ export function generateRoutes(menuData) {
             "orden": 1,
             "submenu": [],
             "_id": "6528c01f01ef0e0e80d5e661"
+        },
+        {
+            "optionID": "register",
+            "title": "Register",
+            "estado": "Activo",
+            "url": "/register",
+            "componentURL": "./public/core/pages/page-register.html",
+            "icono": "person",
+            "orden": 1,
+            "submenu": [],
+            "_id": "6528c01f01ef0e0e80d5e661"
         }
     ];
 
