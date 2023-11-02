@@ -18,11 +18,11 @@ async function realizarSolicitudFetch(url, datos, metodo = 'POST') {
       throw error;
     }
   }
-  
-export async function registerStepOne(name,email,phone,password,doc_dni,role_id) {
+
+export async function registerStore(userId,nameStore,phoneCell,nameCompany,addressComercial) {
   
     var datos = {
-        "userId": "L520231101994",
+        "userId": userId,
         "nameCompany": "Polleria El Galpon",
         "domain": "elgalpon.com",
         "typeCompany": "restofood",
@@ -59,7 +59,7 @@ export async function registerStepOne(name,email,phone,password,doc_dni,role_id)
     };
   
     try {
-      const resultado = await realizarSolicitudFetch("https://ag-auth-78e557894804.herokuapp.com/auth/register", datos);
+      const resultado = await realizarSolicitudFetch("https://ag-companies-014d99127ab1.herokuapp.com/company", datos);
       return resultado;
     } catch (error) {
       console.log('Error en la solicitud:', error);

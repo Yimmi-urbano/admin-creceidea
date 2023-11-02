@@ -24,6 +24,7 @@
                       <div class="item-title item-label">Nombre de tu negocio</div>
                       <div class="item-input-wrap">
                         <input type="text" id="nameStore" placeholder="" />
+                        <input type="hidden" id="nameSubDomain" />
                         <span class="input-clear-button"></span>
                       </div>
                     </div>
@@ -41,7 +42,7 @@
                     <div class="item-inner">
                       <div class="item-title item-label">Direccion comercial</div>
                       <div class="item-input-wrap">
-                        <input type="text" id="store-addrees" placeholder="" />
+                        <input type="text" id="addressComercial" placeholder="" />
                         <span class="input-clear-button"></span>
                       </div>
                     </div>
@@ -71,7 +72,7 @@
                     <div class="item-inner">
                       <div class="item-title item-label">Whatsapp de tu negocio</div>
                       <div class="item-input-wrap">
-                        <input type="text" id="email" placeholder="" />
+                        <input type="text" id="phoneCell" placeholder="" />
                         <span class="input-clear-button"></span>
                       </div>
                     </div>
@@ -102,25 +103,52 @@
     app.on('pageAfterIn', async function (page) {
 
       (function () {
-      const nameStore = document.getElementById('nameStore');
-      const resultText = document.getElementById('resultText');
+        const nameStore = document.getElementById('nameStore');
+        const resultText = document.getElementById('resultText');
 
-      function updateResult() {
-        const enteredValue = nameStore.value;
-        const concatenatedValue = `www.creceidea.com/${enteredValue}`;
-        resultText.textContent = concatenatedValue;
-      }
+        function updateResult() {
+          const enteredValue = nameStore.value;
+          const concatenatedValue = `www.creceidea.com/${enteredValue}`;
+          resultText.textContent = concatenatedValue;
+        }
 
-      nameStore.addEventListener('input', updateResult);
-    })();
+        nameStore.addEventListener('input', updateResult);
+      })();
 
     })
 
+    const validarDatos = (datos) => {
 
+      if (datos && datos.storeId && datos.role_id) {
+        return true;
+      } else {
+        return false;
+      }
+    };
 
     const signRegisterStore = async () => {
 
 
+      const userId = sessionStorage.getItem('userId');
+      const domain = $('input#nameSubDomain').val();
+      const phoneCell = $('input#phoneCell').val();
+      const nameCompany = $('input#nameStore').val();
+      const addressComercial = $('input#addressComercial').val();;
+
+      const checkRegisterStore = await $f7.params.utils.registerStore(domain, userId, phoneCell, nameCompany, addressComercial)
+
+      const isValid = validarDatos(checkRegisterStore);
+
+
+      if (isValid) {
+        sessionStorage.setItem('typeCompany','restofood');
+        $f7router.navigate('/dashboard')
+        $('.mserror').text(' ')
+        $f7.params.utils.closeLoader();
+      } else {
+        $f7.params.utils.closeLoader();
+        $('.mserror').text('Error al registrarse.')
+      }
 
     }
 
