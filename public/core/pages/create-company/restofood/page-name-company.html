@@ -1,115 +1,130 @@
 <template>
-    <div class="page">
-      <div class="page-content page-create-name">
-        <div class="row no-gap ">
-  
-          <div class="medium-100 col-100">
-            <div class="row">
-              <div class="card bg-none">
-                <h2>Hola, <span id="name"></span></h2>
+  <div class="page">
+    <div class="page-content page-create-name">
+      <div class="row no-gap ">
+
+        <div class="medium-100 col-100">
+          <div class="row">
+            <div class="card bg-none">
+              <h2>Hola, <span id="name"></span></h2>
+            </div>
+          </div>
+          <div class="">
+
+            <div>
+              <div class="list list-strong-ios list-dividers-ios inset-ios">
+                <ul>
+                  <li class="item-content item-input item-input-outline">
+                    <div class="item-media icon-sesion">
+                      <span class="material-symbols-outlined">
+                        storefront
+                      </span>
+                    </div>
+                    <div class="item-inner">
+                      <div class="item-title item-label">Nombre de tu negocio</div>
+                      <div class="item-input-wrap">
+                        <input type="text" id="nameStore" placeholder="" />
+                        <span class="input-clear-button"></span>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="item-content item-input preview-domain">
+                    <label class="check-name" id="resultText">www.creceidea.com/mi-negocio</label>
+                  </li>
+
+                  <li class="item-content item-input item-input-outline">
+                    <div class="item-media icon-sesion">
+                      <span class="material-symbols-outlined">
+                        pin_drop
+                      </span>
+                    </div>
+                    <div class="item-inner">
+                      <div class="item-title item-label">Direccion comercial</div>
+                      <div class="item-input-wrap">
+                        <input type="text" id="store-addrees" placeholder="" />
+                        <span class="input-clear-button"></span>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="item-content item-input item-input-outline">
+                    <div class="item-media icon-sesion">
+                      <svg id="Layer_1" width="18" height="18" viewBox="0 0 24 24" fill="#193d4f">
+
+                        <path
+                          d="M12,23.5c-2.2,0-4.3-0.6-6.1-1.8l-4,1.3c-0.2,0.1-0.4,0-0.5-0.1c-0.1-0.1-0.2-0.3-0.1-0.5l1.3-3.8c-1.3-1.9-2-4.2-2-6.5
+                           C0.5,5.7,5.7,0.5,12,0.5c6.3,0,11.5,5.2,11.5,11.5S18.3,23.5,12,23.5z M6,20.7c0.1,0,0.2,0,0.3,0.1c1.7,1.1,3.7,1.7,5.8,1.7
+                           c5.8,0,10.5-4.7,10.5-10.5S17.8,1.5,12,1.5C6.2,1.5,1.5,6.2,1.5,12c0,2.2,0.7,4.4,2,6.2c0.1,0.1,0.1,0.3,0.1,0.5l-1.1,3.2l3.3-1
+                           C5.9,20.7,5.9,20.7,6,20.7z M15.6,18.7c-0.8,0-1.8-0.3-3.4-0.9c-2.7-1.1-4.7-3.6-5.6-4.9c0,0-0.1-0.1-0.1-0.1
+                           C6,12,5.1,10.6,5.1,9.1c0-1.7,0.9-2.6,1.2-3c0.4-0.4,0.9-0.6,1.5-0.6c0.1,0,0.2,0,0.3,0c0.6,0,0.9,0.2,1.2,0.9L9.6,7
+                           c0.3,0.7,0.7,1.6,0.7,1.7c0.2,0.4,0.2,0.7,0,1c-0.1,0.2-0.2,0.4-0.4,0.6c-0.1,0.1-0.2,0.2-0.3,0.3c-0.1,0.1-0.2,0.2-0.3,0.3
+                           C9.5,11,9.4,11,9.4,11c0.5,0.8,1.1,1.5,1.7,2.1c1.1,0.9,1.9,1.3,2.3,1.5l0.1,0c0.1,0,0.1,0.1,0.2,0c0.2-0.2,0.5-0.6,0.7-1
+                           l0.1-0.1c0.3-0.4,0.7-0.5,0.9-0.5c0.1,0,0.3,0,0.5,0.1c0.3,0.1,1.4,0.6,2.2,1.1l0.2,0.1c0.3,0.1,0.5,0.2,0.6,0.5
+                           c0.2,0.4,0.1,1.3-0.1,1.9c-0.3,0.9-1.5,1.7-2.5,1.9C16.1,18.6,15.9,18.7,15.6,18.7z M7.9,6.5c-0.3,0-0.6,0.1-0.8,0.2
+                           c-0.3,0.3-1,1-1,2.3c0,1.2,0.8,2.5,1.2,3l0.1,0.1c1.5,2.2,3.3,3.8,5.2,4.6c1.4,0.6,2.4,0.9,3,0.9c0.2,0,0.4,0,0.5-0.1
+                           c0.7-0.2,1.6-0.7,1.8-1.2c0.2-0.5,0.2-0.9,0.2-1.1c-0.1,0-0.1-0.1-0.2-0.1l-0.2-0.1c-1.1-0.6-2-1-2.1-1c-0.1,0-0.1-0.1-0.2,0.1
+                           l-0.1,0.1c-0.3,0.4-0.6,0.8-0.8,1.1c-0.3,0.3-0.9,0.4-1.3,0.2l-0.1,0c-0.4-0.2-1.4-0.6-2.6-1.6c-0.7-0.6-1.3-1.4-1.9-2.3
+                           c-0.4-0.6,0-1.1,0.2-1.3C8.8,10.2,8.9,10,9,9.9c0.1-0.1,0.1-0.1,0.2-0.2c0.2-0.2,0.2-0.2,0.3-0.4c0,0,0-0.1,0-0.2
+                           C9.4,9.1,9,8.1,8.7,7.4L8.5,6.8C8.4,6.6,8.3,6.5,8.3,6.5c0,0-0.1,0-0.1,0C8,6.5,7.9,6.5,7.9,6.5z" />
+
+                      </svg>
+                    </div>
+                    <div class="item-inner">
+                      <div class="item-title item-label">Whatsapp de tu negocio</div>
+                      <div class="item-input-wrap">
+                        <input type="text" id="email" placeholder="" />
+                        <span class="input-clear-button"></span>
+                      </div>
+                    </div>
+                  </li>
+                  <div class="mserror"></div>
+                </ul>
               </div>
-            </div>
-            <div class="">
-
-              <div>
-                <div class="list list-strong-ios list-dividers-ios inset-ios">
-                    <ul>
-                        <li class="item-content item-input item-input-outline">
-                            <div class="item-media icon-sesion">
-                                <span class="material-symbols-outlined">
-                                    person
-                                    </span>
-                            </div>
-                            <div class="item-inner">
-                                <div class="item-title item-label">Nombres y Apellidos</div>
-                                <div class="item-input-wrap">
-                                    <input type="text" id="name_lastname" placeholder="" />
-                                    <span class="input-clear-button"></span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="item-content item-input item-input-outline">
-                            <div class="item-media icon-sesion">
-                                <span class="material-symbols-outlined">
-                                    badge
-                                    </span>
-                            </div>
-                            <div class="item-inner">
-                                <div class="item-title item-label">DNI</div>
-                                <div class="item-input-wrap">
-                                    <input type="text" id="doc_dni" placeholder="" />
-                                    <span class="input-clear-button"></span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="item-content item-input item-input-outline">
-                            <div class="item-media icon-sesion">
-                                <i class="icon icon-letter"></i>
-                            </div>
-                            <div class="item-inner">
-                                <div class="item-title item-label">E-mail</div>
-                                <div class="item-input-wrap">
-                                    <input type="text" id="email" placeholder="" />
-                                    <span class="input-clear-button"></span>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li class="item-content item-input item-input-outline">
-                            <div class="item-media icon-sesion">
-                                <span class="material-symbols-outlined">
-                                    phone_iphone
-                                    </span>
-                            </div>
-                            <div class="item-inner">
-                                <div class="item-title item-label">Celular</div>
-                                <div class="item-input-wrap">
-                                    <input type="text" id="phone_cell" placeholder="" />
-                                    <span class="input-clear-button"></span>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li class="item-content item-input item-input-outline">
-                            <div class="item-media icon-sesion">
-                                <i class="icon icon-lock"></i>
-                            </div>
-                            <div class="item-inner">
-                                <div class="item-title item-label">Crea tu contraseña</div>
-                                <div class="item-input-wrap">
-                                    <input type="password" id="password" placeholder="" />
-                                    <span class="input-clear-button"></span>
-                                </div>
-                            </div>
-
-                        </li>
-                        <div class="mserror"></div>
-                    </ul>
-                </div>
-                <div class="list inset">
-                    <ul>
-                        <li> <button id="login-backend"  class="button button-fill">Registrarme</button>
-                        </li>
-                    </ul>
-                    <div class="block-footer">Aceptar Terminos y condiciones</div>
-                </div>
-            </div>
-
-
-
+              <div class="list inset">
+                <ul>
+                  <li> <button id="login-backend" @click=${signRegisterStore} class="button button-fill">Registrar mi
+                      negocio</button>
+                  </li>
+                </ul>
+                <div class="block-footer">Aceptar Terminos y condiciones</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  
-  </template>
-  
-  <script>
-     export default (props, { $, $f7, $f7router }) => {
-  
-     
-      $('.view.view-main').addClass('page-create-name')
-      return $render;
-     }
-  </script>
+  </div>
+
+</template>
+
+<script>
+  export default (props, { $, $f7, $f7router }) => {
+
+    app.on('pageAfterIn', async function (page) {
+
+      (function () {
+      const nameStore = document.getElementById('nameStore');
+      const resultText = document.getElementById('resultText');
+
+      function updateResult() {
+        const enteredValue = nameStore.value;
+        const concatenatedValue = `www.creceidea.com/${enteredValue}`;
+        resultText.textContent = concatenatedValue;
+      }
+
+      nameStore.addEventListener('input', updateResult);
+    })();
+
+    })
+
+
+
+    const signRegisterStore = async () => {
+
+
+
+    }
+
+    $('.view.view-main').addClass('page-create-name')
+    return $render;
+  }
+</script>
