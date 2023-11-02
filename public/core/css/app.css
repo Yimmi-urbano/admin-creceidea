@@ -2381,3 +2381,11 @@ code {
 footer{
   display: none;
 }
+.bg-none{
+
+  background-color: transparent !important;
+
+}
+.page-select-catgory .toolbar, .page-create-name .toolbar{
+  display: none;
+}

@@ -50,9 +50,6 @@
         </div>
       </div>
     </div>
-
-
-
   </div>
 </template>
 
@@ -77,12 +74,13 @@
       const authCheck = await loginAuth(username, password)
       const isValid = validarDatos(authCheck);
 
-
       if (isValid) {
-        $f7router.navigate('/dashboard')
+        $f7router.navigate('/create/select-category')
         $('.mserror').text(' ')
         sessionStorage.setItem('type_user', authCheck.roleId);
         sessionStorage.setItem('token', authCheck.token);
+        sessionStorage.setItem('name', authCheck.name);
+        sessionStorage.setItem('storeId', authCheck.storeId);
         $f7.params.utils.closeLoader();
       } else {
         $f7.params.utils.closeLoader();

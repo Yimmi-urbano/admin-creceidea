@@ -1,91 +1,7 @@
 
-
-
-export function fetchOptions(idEmpresa) {
-    var requestOptions = {
-        method: 'GET',
-        redirect: 'follow'
-    };
-    return fetch("https://ag-option-389b72fa4868.herokuapp.com/options/" + idEmpresa, requestOptions)
-        .then(async response => {
-            if (!response.ok) {
-                throw new Error(`Error en la solicitud: ${response.status}`);
-            }
-            const result = await response.json();
-            return result;
-        })
-        .catch(error => {
-            throw error;
-        });
-}
-
-
-
 export function generateRoutes(menuData) {
-    const menuSystem = [
-        {
-            "optionID": "dashboard",
-            "title": "Dashboards",
-            "estado": "Activo",
-            "url": "/dashboard",
-            "componentURL": "./public/core/pages/dashboard.html?v=1",
-            "icono": "dashboard",
-            "orden": 1,
-            "submenu": [],
-            "_id": "6528c01f01ef0e0e80d5e65e"
-        },
-        {
-            "optionID": "inicio",
-            "title": "Inicio",
-            "estado": "Activo",
-            "url": "/",
-            "componentURL": "./public/core/pages/home.html?v=1",
-            "icono": "home",
-            "orden": 1,
-            "submenu": [],
-            "_id": "6528c01f01ef0e0e80d5e65f"
-        },
-        {
-            "optionID": "configuration",
-            "title": "Configuracion",
-            "estado": "Activo",
-            "url": "/configuracion",
-            "componentURL": "./public/core/pages/configuracion.html?v=1",
-            "icono": "settings",
-            "orden": 1,
-            "submenu": [],
-            "_id": "6528c01f01ef0e0e80d5e660"
-        },
-        {
-            "optionID": "login",
-            "title": "Login",
-            "estado": "Activo",
-            "url": "/login",
-            "componentURL": "./public/core/pages/page-login.html",
-            "icono": "person",
-            "orden": 1,
-            "submenu": [],
-            "_id": "6528c01f01ef0e0e80d5e661"
-        },
-        {
-            "optionID": "register",
-            "title": "Register",
-            "estado": "Activo",
-            "url": "/register",
-            "componentURL": "./public/core/pages/page-register.html",
-            "icono": "person",
-            "orden": 1,
-            "submenu": [],
-            "_id": "6528c01f01ef0e0e80d5e661"
-        }
-    ];
 
-
-    menuSystem.forEach(menuItem => {
-        menuData.menu_panel.push(menuItem);
-    });
-
-
+console.log(menuData)
     const routes = [];
 
     function createRoute(item) {
@@ -114,66 +30,12 @@ export function generateRoutes(menuData) {
             traverseMenu(menuData[key]);
         }
     }
-
-    return routes;
+return routes;
 }
 
 
 export function generarMenu(menuData) {
-    const menuSystem = [
-        {
-            "optionID": "inicio",
-            "title": "Inicio",
-            "estado": "Inactivo",
-            "url": "/",
-            "componentURL": "./public/core/pages/home.html?v=1",
-            "icono": "home",
-            "orden": 1,
-            "submenu": [],
-            "_id": "6528c01f01ef0e0e80d5e65f"
-        },
-        {
-            "optionID": "dashboard",
-            "title": "Dashboard",
-            "estado": "Activo",
-            "url": "/dashboard",
-            "componentURL": "./public/core/pages/dashboard.html?v=1",
-            "icono": "dashboard",
-            "orden": 0,
-            "submenu": [],
-            "_id": "6528c01f01ef0e0e80d5e65e"
-        },
 
-        {
-            "optionID": "configuration",
-            "title": "Configuracion",
-            "estado": "Activo",
-            "url": "/configuracion",
-            "componentURL": "./public/core/pages/configuracion.html?v=1",
-            "icono": "settings",
-            "orden": 3,
-            "submenu": [],
-            "_id": "6528c01f01ef0e0e80d5e660"
-        },
-        {
-            "optionID": "login",
-            "title": "Login",
-            "estado": "Inactivo",
-            "url": "/login",
-            "componentURL": "./public/core/pages/login.html?v=1",
-            "icono": "person",
-            "orden": 4,
-            "submenu": [],
-            "_id": "6528c01f01ef0e0e80d5e661"
-        }
-    ];
-
-
-
-
-    menuSystem.forEach(menuItem => {
-        menuData.menu_panel.push(menuItem);
-    });
 
     menuData.menu_panel.sort((a, b) => a.orden - b.orden);
 
@@ -234,6 +96,8 @@ export function generarMenu(menuData) {
 
 
 }
+
+
 
 
 

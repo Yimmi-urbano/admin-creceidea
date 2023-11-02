@@ -1,26 +1,16 @@
-import { fetchOptions, generateRoutes, generarMenu } from '../../modulos/navigation/index.js';
-import { loginAuth, checkLogin, getInfoCompany,registerUser } from '../../modulos/login/session.js';
+import { generateRoutes, generarMenu } from '../../modulos/navigation/index.js';
+import { menuOptions } from '../../core/js/menuRestobar.js';
+import { loginAuth, checkLogin, getInfoCompany, registerUser } from '../../modulos/login/session.js';
 import { openLoader, closeLoader } from './util.js'
 
-const idEmpresa = 44494994;
+let typeCompany;
 
-const sysRoutes = await fetchOptions(idEmpresa).then(resultado => {
+const sysRoutes = await menuOptions(typeCompany).then(resultado => {
+
   return generateRoutes(resultado)
 }).catch(error => {
   console.log("Error:", error);
 });
-
-function menuPanel() {
-
-  fetchOptions(idEmpresa)
-    .then(resultado => {
-      generarMenu(resultado)
-    })
-    .catch(error => {
-      console.log("Error:", error);
-    });
-
-}
 
 async function redirectLogin() {
   const isLoggedIn = await checkLogin();
@@ -34,7 +24,6 @@ async function redirectLogin() {
 
       return;
     } else {
-
 
       $('.panel.panel-left').show()
       app.panel.create({
@@ -55,6 +44,22 @@ async function redirectLogin() {
   }
 
 }
+
+
+
+function menuPanel() {
+
+  menuOptions(storeId)
+    .then(resultado => {
+      generarMenu(resultado)
+    })
+    .catch(error => {
+      console.log("Error:", error);
+    });
+
+}
+
+
 
 var $ = Dom7;
 var theme = 'ios';
@@ -90,16 +95,17 @@ window.app = app;
 
 app.on('pageAfterIn', async function (page) {
 
-  if (page.route.route.path === '/login' || page.route.route.path === '/register') {
+  if (page.route.route.path === '/login' || page.route.route.path === '/register' ) {
     window.loginAuth = loginAuth;
     $('.panel.panel-left').hide()
     $('footer').hide()
     $('.view.view-main').removeAttr('style')
   } else {
     redirectLogin()
-    getInfoCompany()
+    //getInfoCompany()
+    const name = sessionStorage.getItem('name');
+    $('#name').text(name)
     $('footer').show()
-
   }
 });
 

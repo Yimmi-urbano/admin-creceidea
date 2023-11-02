@@ -1,0 +1,47 @@
+<template>
+  <div class="page">
+    <div class="page-content select-category-page">
+      <div class="row no-gap ">
+
+        <div class="medium-100 col-100">
+          <div class="row">
+            <div class="card bg-none">
+              <h2>Hola, <span id="name"></span></h2>
+            </div>
+          </div>
+          <div class="">
+
+            <div class="row">
+
+              <div class="medium-25 col-100">
+                <div class="card card-raised ">
+                  <div class="card-content card-content-padding">
+                    <a href="/create/restofood/name-company">Diseña tu <br> </br> carta +</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="medium-25 col-100">
+                <div class="card card-raised ">
+                  <div class="card-content card-content-padding">
+                    <a href="/create/ecommerce/name-company">Diseña tu <br> </br> tienda virtual +</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</template>
+
+<script>
+   export default (props, { $, $f7, $f7router }) => {
+
+   
+    $('.view.view-main').addClass('page-select-catgory')
+    return $render;
+   }
+</script>

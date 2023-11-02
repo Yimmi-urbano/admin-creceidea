@@ -1,16 +1,17 @@
 <template>
-    <div class="page no-toolbar no-navbar no-panel no-swipeback login-screen-page">
-
-        <div class="page-content login-screen-content">
-
-            <div class="login-screen-title">
-
-                <div class="logo-creceidea">
-                    <img width="270px" src="public/core/images/logo_creceidea.png" />
-                </div>
-
+    <div class="page">
+      <div class="page-content page-create-name">
+        <div class="row no-gap ">
+  
+          <div class="medium-100 col-100">
+            <div class="row">
+              <div class="card bg-none">
+                <h2>Hola, <span id="name"></span></h2>
+              </div>
             </div>
-            <div>
+            <div class="">
+
+              <div>
                 <div class="list list-strong-ios list-dividers-ios inset-ios">
                     <ul>
                         <li class="item-content item-input item-input-outline">
@@ -87,59 +88,28 @@
                 </div>
                 <div class="list inset">
                     <ul>
-                        <li> <button id="login-backend" @click=${signRegister} class="button button-fill">Registrarme</button>
+                        <li> <button id="login-backend"  class="button button-fill">Registrarme</button>
                         </li>
                     </ul>
-                    <div class="block-footer">Ingresar a mi cuenta</div>
+                    <div class="block-footer">Aceptar Terminos y condiciones</div>
                 </div>
             </div>
+
+
+
+            </div>
+          </div>
         </div>
-
-
-
+      </div>
     </div>
-</template>
-
-<script>
-
-    export default (props, { $, $f7, $f7router }) => {
-
-        const validarDatos = (datos) => {
-            console.log(datos)
-            if (datos && datos.userId && datos.role_id) {
-                return true;
-            } else {
-                return false;
-            }
-        };
-
-        const signRegister = async () => {
-            let name = $('input#name_lastname').val();
-            let phonecell = $('input#phone_cell').val();
-            let password = $('input#password').val();
-            let dni = $('input#doc_dni').val();
-            let email = $('input#email').val();
-            let role_id = "1";
-
-
-            $f7.params.utils.openLoader()
-
-            const checkRegister = await $f7.params.utils.registerUser(name,email,phonecell,password,dni,role_id) 
-            const isValid = validarDatos(checkRegister);
-
-
-            if (isValid) {
-                $f7router.navigate('/login')
-                $('.mserror').text(' ')
-                $f7.params.utils.closeLoader();
-            } else {
-                $f7.params.utils.closeLoader();
-                $('.mserror').text('Error al registrarse.')
-            }
-
-        }
-
-        return $render;
-    };
-
-</script>
+  
+  </template>
+  
+  <script>
+     export default (props, { $, $f7, $f7router }) => {
+  
+     
+      $('.view.view-main').addClass('page-create-name')
+      return $render;
+     }
+  </script>
