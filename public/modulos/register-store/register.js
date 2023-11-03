@@ -19,12 +19,12 @@ async function realizarSolicitudFetch(url, datos, metodo = 'POST') {
     }
   }
 
-export async function registerStore(userId,nameStore,phoneCell,nameCompany,addressComercial) {
+export async function registerStore(domain, userId, phoneCell, nameCompany, addressComercial) {
   
     var datos = {
         "userId": userId,
-        "nameCompany": "Polleria El Galpon",
-        "domain": "elgalpon.com",
+        "nameCompany": nameCompany,
+        "domain": domain,
         "typeCompany": "restofood",
         "typeService": "free",
         "country": "PE",
@@ -32,8 +32,8 @@ export async function registerStore(userId,nameStore,phoneCell,nameCompany,addre
         "configContact": {
             "name": "Yimmi Elmer",
             "email": "contacto@gmail.com",
-            "phoneCell": "999888777",
-            "addressComercial": "Avenida Juan de Aliaga 3343",
+            "phoneCell": phoneCell,
+            "addressComercial": addressComercial,
             "socialNet": {
                 "facebook": "https://facebook.com",
                 "instagram": "https://instagram.com",

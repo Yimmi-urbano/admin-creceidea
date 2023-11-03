@@ -168,6 +168,17 @@ export async function menuOptions(selectOption) {
                 "orden": 4,
                 "submenu": []
             }
+            ,
+            {
+                "optionID": "dashboard",
+                "title": "Escritorio de mi tienda",
+                "estado": "Inactivo",
+                "url": "/dashboard",
+                "componentURL": "./public/core/pages/dashboard.html?v=1",
+                "icono": "person",
+                "orden": 4,
+                "submenu": []
+            }
         ]
     };
 

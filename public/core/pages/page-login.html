@@ -1,4 +1,3 @@
-
 <template>
   <div class="page no-toolbar no-navbar no-panel no-swipeback login-screen-page">
 
@@ -68,19 +67,35 @@
     const signIn = async () => {
       let username = $('input#user_email').val();
       let password = $('input#user_password').val();
-  
+
       $f7.params.utils.openLoader()
 
       const authCheck = await loginAuth(username, password)
       const isValid = validarDatos(authCheck);
 
+
       if (isValid) {
-        $f7router.navigate('/create/select-category')
+
         $('.mserror').text(' ')
         sessionStorage.setItem('type_user', authCheck.roleId);
         sessionStorage.setItem('token', authCheck.token);
         sessionStorage.setItem('name', authCheck.name);
-        sessionStorage.setItem('storeId', authCheck.storeId);
+        sessionStorage.setItem('userId', authCheck.userId);
+
+        let userId = sessionStorage.getItem('userId') ?? null;
+
+        const countStores = await $f7.params.utils.checkLimitsStores(userId).then(resultado => {
+          return resultado
+        }).catch(error => {
+          console.log("Error:", error);
+        });
+
+        if (countStores == 0) {
+          $f7router.navigate('/create/select-category')
+        } else {
+          $f7router.navigate('/dashboard')
+        }
+
         $f7.params.utils.closeLoader();
       } else {
         $f7.params.utils.closeLoader();

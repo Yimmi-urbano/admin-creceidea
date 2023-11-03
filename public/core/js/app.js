@@ -2,9 +2,14 @@ import { generateRoutes, generarMenu } from '../../modulos/navigation/index.js';
 import { menuOptions } from '../../core/js/menuRestobar.js';
 import { loginAuth, checkLogin, registerUser } from '../../modulos/login/session.js';
 import { registerStore } from '../../modulos/register-store/register.js'
-import { openLoader, closeLoader } from './util.js'
+import { openLoader, closeLoader, checkLimitsStores } from './util.js'
 
-let typeCompany = sessionStorage.getItem('typeCompany');
+
+let typeCompany = sessionStorage.getItem('typeCompany') ?? null;
+
+
+
+
 
 const sysRoutes = await menuOptions(typeCompany).then(resultado => {
 
@@ -37,6 +42,12 @@ async function redirectLogin() {
         visibleBreakpoint: 1024
       })
 
+      const name = sessionStorage.getItem('name');
+      $('#name').text(name)
+      $('footer').show()
+
+
+
 
     }
   } catch (error) {
@@ -50,7 +61,7 @@ async function redirectLogin() {
 
 function menuPanel() {
 
-  menuOptions(storeId)
+  menuOptions(typeCompany)
     .then(resultado => {
       generarMenu(resultado)
     })
@@ -71,7 +82,7 @@ var app = new Framework7({
   view: {
     browserHistory: true,
   },
-  utils: { closeLoader, openLoader, registerUser,registerStore },
+  utils: { closeLoader, openLoader, registerUser, registerStore,checkLimitsStores },
 
   popup: {
     closeOnEscape: true,
@@ -95,6 +106,8 @@ window.app = app;
 
 
 app.on('pageAfterIn', async function (page) {
+
+
 
   if (page.route.route.path === '/login' || page.route.route.path === '/register') {
     window.loginAuth = loginAuth;

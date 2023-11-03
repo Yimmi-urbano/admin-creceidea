@@ -42,17 +42,6 @@ export async function checkLogin(app) {
   return type_user !== null;
 }
 
-export async function getInfoCompany(email_primary){
-  var requestOptions = {
-    method: 'GET',
-    redirect: 'follow'
-  };
-  
-  fetch("http://localhost:3234/api/company/yurbanoantunezqa@gmail.com", requestOptions)
-    .then(response => response.json())
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error));
-}
 
 export async function registerUser(name,email,phone,password,doc_dni,role_id) {
   

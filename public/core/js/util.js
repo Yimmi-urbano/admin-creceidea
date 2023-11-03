@@ -115,4 +115,35 @@
     app.dialog.close()
 }
 
-export {openLoader,closeLoader}
+async function checkLimitsStores(userId) {
+    let cantidadDeRegistros = 0;
+    try {
+      var requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+      };
+  
+      const response = await fetch("https://ag-companies-014d99127ab1.herokuapp.com/company/" + userId, requestOptions);
+  
+      if (response.ok) {
+        const result = await response.json();
+  
+        if (Array.isArray(result)) {
+          cantidadDeRegistros = result.length;
+        } else {
+          // Si la respuesta no es un arreglo, puedes establecer la cantidad de registros en 1.
+          cantidadDeRegistros = 1;
+        }
+      } else {
+        throw new Error("Error en la solicitud");
+      }
+  
+      return cantidadDeRegistros;
+    } catch (error) {
+      console.log('Error:', error);
+      throw error;
+    }
+  }
+  
+
+export {openLoader,closeLoader,checkLimitsStores}
