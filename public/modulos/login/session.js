@@ -37,7 +37,7 @@ export async function loginAuth(username, password) {
 
 }
 
-export async function checkLogin(app) {
+export async function checkLogin() {
   const type_user = sessionStorage.getItem('type_user');
   return type_user !== null;
 }

@@ -106,7 +106,7 @@ export async function menuOptions(selectOption) {
                 "title": "Login",
                 "estado": "Inactivo",
                 "url": "/login",
-                "componentURL": "./public/core/pages/login.html?v=1",
+                "componentURL": "./public/core/pages/page-login.html?v=1",
                 "icono": "person",
                 "orden": 4,
                 "submenu": [],
@@ -158,17 +158,6 @@ export async function menuOptions(selectOption) {
                 "orden": 4,
                 "submenu": []
             },
-            {
-                "optionID": "create-name-company",
-                "title": "Crea el nombre de tu negocio",
-                "estado": "Inactivo",
-                "url": "/create/ecommerce/name-company",
-                "componentURL": "./public/core/pages/create-company/ecommerce/page-name-company.html?v=1",
-                "icono": "person",
-                "orden": 4,
-                "submenu": []
-            }
-            ,
             {
                 "optionID": "dashboard",
                 "title": "Escritorio de mi tienda",

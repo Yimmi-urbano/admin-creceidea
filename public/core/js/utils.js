@@ -1,4 +1,8 @@
- async function openLoader() {
+import { checkLogin } from "../../modulos/login/session.js";
+import { generarMenu } from '../../modulos/navigation/index.js';
+import { menuOptions } from '../../core/js/menuRestobar.js';
+
+async function openLoader() {
     const loaderDialog = app.dialog.create({
         content: `
         <div class="dialog-content">
@@ -110,40 +114,77 @@
 
 }
 
- async function closeLoader() {
+async function closeLoader() {
 
     app.dialog.close()
 }
 
-async function checkLimitsStores(userId) {
+async function checkCountStores(userId) {
     let cantidadDeRegistros = 0;
     try {
-      var requestOptions = {
-        method: 'GET',
-        redirect: 'follow'
-      };
-  
-      const response = await fetch("https://ag-companies-014d99127ab1.herokuapp.com/company/" + userId, requestOptions);
-  
-      if (response.ok) {
-        const result = await response.json();
-  
-        if (Array.isArray(result)) {
-          cantidadDeRegistros = result.length;
-        } else {
-          // Si la respuesta no es un arreglo, puedes establecer la cantidad de registros en 1.
-          cantidadDeRegistros = 1;
-        }
-      } else {
-        throw new Error("Error en la solicitud");
-      }
-  
-      return cantidadDeRegistros;
-    } catch (error) {
-      console.log('Error:', error);
-      throw error;
-    }
-  }
-  
+        var requestOptions = {
+            method: 'GET',
+            redirect: 'follow'
+        };
 
-export {openLoader,closeLoader,checkLimitsStores}
+        const response = await fetch("https://ag-companies-014d99127ab1.herokuapp.com/company/" + userId, requestOptions);
+
+        if (response.ok) {
+            const result = await response.json();
+
+            if (Array.isArray(result)) {
+                cantidadDeRegistros = result.length;
+            }
+        } else {
+            throw new Error("Error en la solicitud");
+        }
+
+        return cantidadDeRegistros;
+        
+    } catch (error) {
+        console.log('Error:', error);
+        throw error;
+    }
+}
+
+async function redirectLogin() {
+    try {
+        const isLoggedIn = await checkLogin();
+
+        if (!isLoggedIn) {
+            setTimeout(() => {
+                app.view.main.router.navigate('/login/');
+            }, 100);
+            return;
+        } else {
+            const panelLeft = document.querySelector('.panel.panel-left');
+            if (panelLeft) {
+              panelLeft.style.display = 'block';
+            }
+            
+            app.panel.create({
+                el: '.panel-left',
+                on: {
+                    opened: menuPanel
+                },
+                visibleBreakpoint: 1024
+            });
+
+        }
+    } catch (error) {
+        console.error('Error checking login:', error);
+    }
+}
+
+async function menuPanel() {
+    const typeCompany = sessionStorage.getItem('typeCompany') ?? null;
+
+    try {
+        const resultado = await menuOptions(typeCompany);
+        generarMenu(resultado);
+    } catch (error) {
+        console.log("Error:", error);
+    }
+}
+
+export { openLoader, closeLoader, checkCountStores, redirectLogin }

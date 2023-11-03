@@ -1,89 +1,54 @@
-import { generateRoutes, generarMenu } from '../../modulos/navigation/index.js';
-import { menuOptions } from '../../core/js/menuRestobar.js';
-import { loginAuth, checkLogin, registerUser } from '../../modulos/login/session.js';
-import { registerStore } from '../../modulos/register-store/register.js'
-import { openLoader, closeLoader, checkLimitsStores } from './util.js'
+import {
+  generateRoutes
+} from '../../modulos/navigation/index.js';
+import {
+  menuOptions
+} from '../../core/js/menuRestobar.js';
+import {
+  loginAuth,
+  registerUser
+} from '../../modulos/login/session.js';
+import {
+  registerStore
+} from '../../modulos/company/register.js'
+import {
+  openLoader,
+  closeLoader,
+  checkCountStores,
+  redirectLogin
+} from './utils.js';
 
+import { detailCompany } from "../../modulos/company/getCompany.js";
 
-let typeCompany = sessionStorage.getItem('typeCompany') ?? null;
+const typeCompany = sessionStorage.getItem('typeCompany') ?? null;
 
-
-
-
-
-const sysRoutes = await menuOptions(typeCompany).then(resultado => {
-
-  return generateRoutes(resultado)
-}).catch(error => {
-  console.log("Error:", error);
-});
-
-async function redirectLogin() {
-  const isLoggedIn = await checkLogin();
+async function getSysRoutes() {
   try {
-
-    if (!isLoggedIn) {
-
-      setTimeout(function () {
-        app.view.main.router.navigate('/login/');
-      }, 100);
-
-      return;
-    } else {
-
-      $('.panel.panel-left').show()
-      app.panel.create({
-        el: '.panel-left',
-        on: {
-          opened: function () {
-            menuPanel()
-          }
-        },
-        visibleBreakpoint: 1024
-      })
-
-      const name = sessionStorage.getItem('name');
-      $('#name').text(name)
-      $('footer').show()
-
-
-
-
-    }
+    const resultado = await menuOptions(typeCompany);
+    return generateRoutes(resultado);
   } catch (error) {
-
-    console.error('Error checking login:', error);
+    console.log("Error:", error);
+    return [];
   }
-
 }
 
-
-
-function menuPanel() {
-
-  menuOptions(typeCompany)
-    .then(resultado => {
-      generarMenu(resultado)
-    })
-    .catch(error => {
-      console.log("Error:", error);
-    });
-
-}
-
-
-
-var $ = Dom7;
-var theme = 'ios';
-var app = new Framework7({
+const $ = Dom7;
+const theme = 'ios';
+const app = new Framework7({
   el: '#app',
-  routes: sysRoutes,
+  routes: await getSysRoutes(),
   theme,
   view: {
     browserHistory: true,
   },
-  utils: { closeLoader, openLoader, registerUser, registerStore,checkLimitsStores },
-
+  utils: {
+    closeLoader,
+    openLoader,
+    registerUser,
+    registerStore,
+    checkCountStores,
+    detailCompany
+  },
   popup: {
     closeOnEscape: true,
   },
@@ -101,30 +66,33 @@ var app = new Framework7({
   },
 });
 
-
 window.app = app;
 
 
 app.on('pageAfterIn', async function (page) {
 
+  const currentPagePath = page.route.route.path;
+  const isLoginPage = currentPagePath === '/login' || currentPagePath === '/register';
 
-
-  if (page.route.route.path === '/login' || page.route.route.path === '/register') {
-    window.loginAuth = loginAuth;
-    $('.panel.panel-left').hide()
-    $('footer').hide()
-    $('.view.view-main').removeAttr('style')
+  if (isLoginPage) {
+    initializeLoginPage();
   } else {
-    redirectLogin()
-    const name = sessionStorage.getItem('name');
-    $('#name').text(name)
-    $('footer').show()
+    handleAuthenticatedPage();
   }
+
+  function initializeLoginPage() {
+    window.loginAuth = loginAuth;
+    $('.panel.panel-left').hide();
+    $('footer').hide();
+    $('.view.view-main').removeAttr('style');
+  }
+
+  function handleAuthenticatedPage() {
+    redirectLogin();
+    const name = sessionStorage.getItem('name');
+    $('#name').text(name);
+    $('footer').show();
+  }
+
+
 });
-
-
-
-
-
-
-

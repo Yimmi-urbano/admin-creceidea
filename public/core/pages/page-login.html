@@ -45,7 +45,8 @@
           <ul>
             <li> <button id="login-backend" @click=${signIn} class="button button-fill">Iniciar sesión</button></li>
           </ul>
-          <div class="block-footer">Recuperar clave</div>
+          <div class="block-footer"> <a href="#" class="link">Recuperar clave</a> </div>
+          <div class="block-footer"> <a href="/register" class="link">Registrar mi negocio</a> </div>
         </div>
       </div>
     </div>
@@ -69,10 +70,9 @@
       let password = $('input#user_password').val();
 
       $f7.params.utils.openLoader()
-
+      
       const authCheck = await loginAuth(username, password)
       const isValid = validarDatos(authCheck);
-
 
       if (isValid) {
 
@@ -81,10 +81,9 @@
         sessionStorage.setItem('token', authCheck.token);
         sessionStorage.setItem('name', authCheck.name);
         sessionStorage.setItem('userId', authCheck.userId);
-
         let userId = sessionStorage.getItem('userId') ?? null;
 
-        const countStores = await $f7.params.utils.checkLimitsStores(userId).then(resultado => {
+        const countStores = await $f7.params.utils.checkCountStores(userId).then(resultado => {
           return resultado
         }).catch(error => {
           console.log("Error:", error);
@@ -95,6 +94,8 @@
         } else {
           $f7router.navigate('/dashboard')
         }
+
+        console.log(countStores)
 
         $f7.params.utils.closeLoader();
       } else {
