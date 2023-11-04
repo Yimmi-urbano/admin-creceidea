@@ -124,8 +124,6 @@ body {
   content: "\ea02";
 }
 
-
-
 .logo-creceidea {
   font-family: 'Goldman', cursive;
   font-size: 38px;
@@ -141,7 +139,6 @@ body {
 
 .login-screen-page {
   background: #ffffff;
-
 }
 
 .list .submenu .item-content,
@@ -156,7 +153,6 @@ body {
 }
 
 .ios .list-strong-ios .item-input-outline .item-label {
-
   background: #ffffff !important;
   color: #374d6a;
 }
@@ -164,7 +160,6 @@ body {
 .item-input-outline.item-content::after {
 
   border: 1px solid var(--eastern-blue);
-
 }
 
 .item-link.item-selected .item-title {
@@ -176,8 +171,6 @@ body {
 .dashboard-page {
   background-color: #e4f2f1;
 }
-
-
 
 .toolbar footer {
   width: 95%;
@@ -195,7 +188,6 @@ body {
 
 .toolbar {
   backdrop-filter: none !important;
-  ;
   bottom: 10px !important;
   background-color: transparent !important;
   border: 0px !important;
@@ -207,7 +199,7 @@ body {
 }
 
 .dashboard-page .estadisticas {
-  height: 100vh;
+
   margin: 0px;
 }
 
@@ -2420,7 +2412,11 @@ footer {
   text-align: center;
 
 }
-.check-name{
+
+.check-name {
   color: #1e4e65;
   font-size: 14px;
+}
+#qrcode img{
+  width: 100%;
 }

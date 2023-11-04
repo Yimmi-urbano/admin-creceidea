@@ -1,89 +1,122 @@
 <template>
   <div class="page">
     <div class="page-content dashboard-page">
-      <div class="row no-gap ">
 
-        <div class="medium-100 col-100">
-          <div class="row">
-            <div class="card bg-none">
-              <h2>Hola, <span id="name"></span></h2>
+      <div class="estadisticas">
+
+        <div class="row" style="--f7-grid-gap: 0px;">
+
+          <div class="medium-25 col-50">
+            <div class="card card-raised ">
+              <div class="card-content card-content-padding">
+                <div id="qrcode"></div>
+
+              </div>
             </div>
           </div>
-          <div class="estadisticas">
 
-            <div class="row">
-
-              <div class="medium-25 col-100">
-                <div class="card card-raised ">
-                  <div class="card-content card-content-padding">
-                    <a href="/create/name">Diseña tu <br> </br> carta +</a>
-                  </div>
-                </div>
+          <div class="medium-25 col-50">
+            <div class="card card-raised">
+              <div class="card-content card-content-padding">
+                <div  class="list">
+   <ul>
+    <li> <a href="#"><span class="material-symbols-outlined">
+      print
+      </span> Imprimir QR</a> </li>
+    <li><a href="#"> <span class="material-symbols-outlined">
+      share
+      </span> Compartir QR</a></li>
+    <li><a href="#"><span class="material-symbols-outlined">
+      download
+      </span> Descargar QR</a></li>
+   </ul>
+  </div>
               </div>
-
-              <div class="medium-25 col-50">
-                <div class="card card-raised">
-                  <div class="card-content card-content-padding">
-                    This is a simple card with plain text, but cards can also contain their own header, footer, list
-                    view, image, or any other element.
-                  </div>
-                </div>
-              </div>
-
-              <div class="medium-25 col-50">
-                <div class="card card-raised">
-                  <div class="card-content card-content-padding">
-                    This is a simple card with plain text, but cards can also contain their own header, footer, list
-                    view, image, or any other element.
-
-                  </div>
-                </div>
-              </div>
-
-              <div class="medium-25 col-100">
-                <div class="card card-raised">
-                  <div class="card-content card-content-padding">
-                    This is a simple card with plain text, but cards can also contain their own header, footer, list
-                    view, image, or any other element.
-
-                  </div>
-                </div>
-              </div>
-
             </div>
+          </div>
 
+          <div class="medium-25 col-50">
+            <div class="card card-raised">
+              <div class="card-content card-content-padding">
+                This is a simple card with plain text, but cards can also contain their own header, footer, list
+                view, image, or any other element.
 
+              </div>
+            </div>
+          </div>
+
+          <div class="medium-25 col-50">
+            <div class="card card-raised">
+              <div class="card-content card-content-padding">
+                This is a simple card with plain text, but cards can also contain their own header, footer, list
+                view, image, or any other element.
+
+              </div>
+            </div>
           </div>
 
         </div>
+
+
       </div>
-
-
 
     </div>
   </div>
 
 </template>
 
+
 <script>
-  export default (props, { $, $f7, $f7router }) => {
-    
-    async function infoCompany() {
-      let userId = sessionStorage.getItem('userId') ?? null;
+  export default (props, { $, $f7 }) => {
+    const app = $f7;
+    let dataCompany;
+
+    app.on('pageAfterIn', async (page) => {
+      const userId = sessionStorage.getItem('userId') || null;
 
       try {
         const infoCompany = await $f7.params.utils.detailCompany(userId);
+        dataCompany = infoCompany[0];
 
-        return infoCompany
+
       } catch (error) {
-        console.log("Error:", error);
+        console.log('Error:', error);
       }
-    }
-    let getinfo;
-    infoCompany().then(result => { getinfo=result[0] }).catch(error => { console.log("Error:", error);});
 
-   console.log(getinfo)
+      sessionStorage.setItem('typeCompany', dataCompany.typeCompany);
+
+      const toolbar = document.querySelector('.toolbar');
+      $(toolbar).show()
+
+      const panelLeft = document.querySelector('.panel.panel-left');
+      if (panelLeft) {
+        panelLeft.style.display = 'block';
+      }
+
+      app.panel.create({
+        el: '.panel-left',
+        on: {
+          opened: $f7.params.utils.menuPanel()
+        },
+        visibleBreakpoint: 1024
+      });
+
+
+
+      var qrcodeDiv = document.getElementById("qrcode");
+      var urlParaCodificar = `https://${dataCompany.domain}`;
+      var opcionesQR = {
+        text: urlParaCodificar,
+        width: 128,
+        height: 128,
+      };
+
+      var qrcode = new QRCode(qrcodeDiv, opcionesQR);
+
+
+    });
 
     return $render;
-  }
+  };
+
 </script>

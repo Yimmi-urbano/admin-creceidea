@@ -15,7 +15,8 @@ import {
   openLoader,
   closeLoader,
   checkCountStores,
-  redirectLogin
+  redirectLogin,
+  menuPanel
 } from './utils.js';
 
 import { detailCompany } from "../../modulos/company/getCompany.js";
@@ -47,7 +48,8 @@ const app = new Framework7({
     registerUser,
     registerStore,
     checkCountStores,
-    detailCompany
+    detailCompany,
+    menuPanel
   },
   popup: {
     closeOnEscape: true,

@@ -13,6 +13,16 @@ export async function menuOptions(selectOption) {
                 "submenu": []
             },
             {
+                "optionID": "create-name-company",
+                "title": "Crea el nombre de tu negocio",
+                "estado": "Inactivo",
+                "url": "/create/restofood/name-company",
+                "componentURL": "./public/core/pages/create-company/restofood/page-name-company.html?v=1",
+                "icono": "person",
+                "orden": 4,
+                "submenu": []
+            },
+            {
                 "optionID": "dashboard",
                 "title": "Dashboard",
                 "estado": "Activo",

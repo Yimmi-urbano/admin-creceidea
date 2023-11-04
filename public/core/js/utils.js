@@ -157,18 +157,7 @@ async function redirectLogin() {
             }, 100);
             return;
         } else {
-            const panelLeft = document.querySelector('.panel.panel-left');
-            if (panelLeft) {
-              panelLeft.style.display = 'block';
-            }
-            
-            app.panel.create({
-                el: '.panel-left',
-                on: {
-                    opened: menuPanel
-                },
-                visibleBreakpoint: 1024
-            });
+           
 
         }
     } catch (error) {
@@ -187,4 +176,4 @@ async function menuPanel() {
     }
 }
 
-export { openLoader, closeLoader, checkCountStores, redirectLogin }
+export { openLoader, closeLoader, checkCountStores, redirectLogin,menuPanel }
